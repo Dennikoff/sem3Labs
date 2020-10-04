@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Deltoida.h"
+#include "../lib/Deltoida.h"
 using namespace Prog2;
 //using namespace std;
 int main()
