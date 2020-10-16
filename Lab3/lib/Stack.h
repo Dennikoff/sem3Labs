@@ -5,23 +5,32 @@ namespace Stk {
 	struct Massive
 	{
 		int key;
-		char str[20];
+		char str[20] = {'\0'};
+		void printKey()
+		{
+			std::cout << this->key << std::endl;
+		}
+		void printStr()
+		{
+			std::cout << this->str << std::endl;
+		}
 	};
 	class Stack {
 		int top;
-		Massive mas[SIZE];
+		Massive mas[SIZE] = {'\0'};
 	public: 
 		Stack() { top = 0; };
-		Stack(Massive);
+		Stack(Massive, int k = 1);
 		Stack(Massive*, int);
 		Stack(int);
 		Stack(char* str);
-		Stack& push(Massive, int n = 1);
+		int getTop() { return top; };
+		Stack& push(Massive);
 		Stack& push(Massive*, int);
 		Stack& push(int);
 		Stack& push(char* str);
-		Stack& getElems() const;
-		Stack& getElem() const;
+		const Stack& getElems() const;
+		const Stack& getElem() const;
 		Stack& pop(Massive&);
 		Stack& pop(Massive*, int);
 		Stack& pop(int);
