@@ -3,6 +3,25 @@
 #include "../lib/Stack.h";
 
 namespace Stk {
+	//template<class T>
+	void getInt(int& n)
+	{
+		std::cin >> n;
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	}
+	Massive& Massive::getElem() 
+	{
+		std::cout << "Enter your key" << std::endl;
+		std::cin >> this->key;
+		std::cout << "Enter your string" << std::endl;
+		std::cin >> str;
+		if (strlen(str) < 20)
+			str[strlen(str)] = '\0';
+		else
+			str[19] = '\0';
+		return *this;
+	}
+
 	Stack::Stack(Massive elem, int k)
 	{
 		top = 0;
@@ -14,38 +33,7 @@ namespace Stk {
 		}
 	}
 
-	Stack::Stack(Massive* elem, int n)
-	{
-		top = 0;
-		for (int i = 0; i < n; i++)
-		{
-			if (top > SIZE)
-				throw std::exception("Stack overflow");
-			mas[top++] = elem[i];
-		}
-	}
-
-	Stack::Stack(int ch)
-	{
-		top = 0;
-		if (top > SIZE)
-			throw std::exception("Stack overflow");
-		mas[top++].key = ch;
-	}
-
-	Stack::Stack(char* str)
-	{
-		top = 0;
-		if (top > SIZE - 1)
-			throw std::exception("Stack overflow");
-		for (int i = 0; i < 20 && str[i] != '\0'; i++)
-		{
-			mas[top].str[i] = str[i];
-		}
-		top++;
-	}
-
-	Stack& Stack::push(Massive elem)
+	Stack& Stack::push(Massive elem) //написать метод реализующий добавления из входного потока
 	{
 		if (top > SIZE - 1)
 			throw std::exception("Stack overflow.");
@@ -53,55 +41,33 @@ namespace Stk {
 		return *this;
 	}
 
-	Stack& Stack::push(Massive* elem, int n)
+	Stack& Stack::pushS()
 	{
-		for (int i = 0; i < n; i++)
-		{
-			if (top > SIZE - 1)
-				throw std::exception("Stack overflow");
-			mas[top++] = elem[i];
-		}
-		return *this;
-	}
-
-	Stack& Stack::push(int ch)
-	{
+		Massive elem;
+		elem.getElem();
 		if (top > SIZE - 1)
 			throw std::exception("Stack overflow");
-		mas[top-1].key += ch;
+		mas[top++] = elem;
 		return *this;
 	}
 
-	Stack& Stack::push(char* str)
-	{
-		if (top > SIZE - 1)
-			throw std::exception("Stack overflow");
-		for(int i = 0; i < 19 && str[i] != '\0'; i++)
-		{
-			mas[top].str[i] = str[i];
-		}
-		mas[top].str[20] = '\0';
-		return *this;
-	}
-
-	const Stack& Stack::getElems() const
+	void Stack::Print() const
 	{	
 		if (top == 0)
 			throw std::exception("Stack is empty");
 		int g = top;
 		while(--g >= 0)
 		{	
-			std::cout << g + 1 << " key: " << mas[g].key << "  " << " str: " << mas[g].str << std::endl;
+			Massive elem = mas[g];
+			elem.Print();
 		}
-		return *this;
 	}
-
-	const Stack& Stack::getElem() const
+	void Stack::PrintFirst() const
 	{
 		if (top == 0)
 			throw std::exception("Stack is empty");
-		std::cout << " key: " << mas[top - 1].key << "  " << " str: " << mas[top - 1].str << std::endl;
-		return *this;
+		Massive h = mas[top - 1];
+		h.Print();
 	}
 
 	Stack& Stack::pop(Massive& elem)
@@ -112,39 +78,14 @@ namespace Stk {
 		return *this;
 	}
 
-	Stack& Stack::pop(Massive* elem, int n)
-	{
-		for (int i = 0; i < n; i++)
-		{
-			if (top == 0)
-				throw std::exception("Stack is empty");
-			*elem = mas[--top];
-		}
-		return *this;
-	}
-
-	Stack& Stack::pop(int ch)
-	{
-		if (top == 0)
-			throw std::exception("Stack is empty");
-		ch = mas[--top].key;
-	}
-
-	Stack& Stack::pop(char* str)
-	{
-		if (top == 0)
-			throw std::exception("Stack is empty");
-		str = mas[top].str;
-	}
-	Stack& Stack::check()
+	int Stack::check()
 	{
 		if (top > SIZE - 1)
-			std::cout << "Stack Overflow" << std::endl;
+			return -1;     //заполнен
 		else
 			if (top > 0)
-				std::cout << "Stack Patricaly filled" << std::endl;
+				return 0;    //частично заполнен
 			else
-				std::cout << "Stack is Empty" << std::endl;
-		return *this;
+				return 1;    //пуст
 	}
 }

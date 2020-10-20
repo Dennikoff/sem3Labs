@@ -1,41 +1,41 @@
 #ifndef LAB3_STACK_H
 #define LAB3_STACK_H
-int const SIZE = 20;
+int const SIZE = 5;
 namespace Stk {
+	//template<class T>
+	void getInt(int&);
 	struct Massive
 	{
+	private:
 		int key;
-		char str[20] = {'\0'};
-		void printKey()
+		char str[21] = {};
+	public:
+		Massive& setKey(int a)
 		{
-			std::cout << this->key << std::endl;
+			key = a;
+			return *this;
 		}
-		void printStr()
+		int getKey() { return key; }
+		Massive& getElem();
+		void Print() const
 		{
-			std::cout << this->str << std::endl;
+			std::cout << "key: " << key << " str: " << str << ' ' << std::endl;
 		}
 	};
 	class Stack {
 		int top;
-		Massive mas[SIZE] = {'\0'};
+		Massive mas[SIZE] = {};
 	public: 
 		Stack() { top = 0; };
-		Stack(Massive, int k = 1);
-		Stack(Massive*, int);
-		Stack(int);
-		Stack(char* str);
-		int getTop() { return top; };
-		Stack& push(Massive);
-		Stack& push(Massive*, int);
-		Stack& push(int);
-		Stack& push(char* str);
-		const Stack& getElems() const;
-		const Stack& getElem() const;
-		Stack& pop(Massive&);
-		Stack& pop(Massive*, int);
-		Stack& pop(int);
-		Stack& pop(char* str);
-		Stack& check();
+		Stack(Massive, int k = 1); //Создаёт k одинаковых элементов
+		int getTop() { return top; }; //возвращает вершину(для гугл теста)
+		Stack& push(Massive); //добавление элемента 
+		Stack& pushS(); //добавление элемента из потока
+		/*Stack& push(Massive, int);*/
+		void Print() const; //выводит весь стек в поток
+		void PrintFirst() const; //выводит только первый элемент
+		Stack& pop(Massive&); //выборка из стека 
+		int check(); //проверяет стек на заполненность(-1 полный; 0 частично заполнен; 1 пустой)
 	};
 }
 
