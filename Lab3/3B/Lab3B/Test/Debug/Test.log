@@ -1,4 +1,0 @@
-﻿  pch.cpp
-  test.cpp
-lib.lib(Stack.obj) : warning LNK4075: не учитывается "/EDITANDCONTINUE" из-за спецификации "/SAFESEH"
-  Test.vcxproj -> C:\Users\dhark\source\repos\Lab3B\Debug\Test.exe

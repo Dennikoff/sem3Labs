@@ -1,6 +1,0 @@
-C:\Users\dhark\source\repos\Lab3\Debug\lib.pdb
-C:\Users\dhark\source\repos\Lab3\lib\Debug\lib.pdb
-C:\Users\dhark\source\repos\Lab3A\Debug\lib.pdb
-C:\Users\dhark\source\repos\Lab3A\lib\Debug\lib.pdb
-C:\Users\dhark\source\repos\Lab3B\Debug\lib.pdb
-C:\Users\dhark\source\repos\Lab3B\lib\Debug\lib.pdb

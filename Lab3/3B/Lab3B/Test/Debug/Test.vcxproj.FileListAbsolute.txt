@@ -1,2 +1,0 @@
-C:\Users\dhark\source\repos\Lab3A\Test\Debug\Test.vcxproj.CopyComplete
-C:\Users\dhark\source\repos\Lab3B\Test\Debug\Test.vcxproj.CopyComplete

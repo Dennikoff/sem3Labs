@@ -1,3 +1,0 @@
-﻿  main.cpp
-main.obj : error LNK2019: ссылка на неразрешенный внешний символ "class std::basic_ostream<char,struct std::char_traits<char> > & __cdecl Stk::operator<<(class std::basic_ostream<char,struct std::char_traits<char> > &,class Stk::Stack)" (??6Stk@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@std@@AAV12@VStack@0@@Z) в функции __catch$_main$2.
-C:\Users\dhark\source\repos\Lab3B\Debug\Lab3.exe : fatal error LNK1120: неразрешенных внешних элементов: 1
