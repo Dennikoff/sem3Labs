@@ -25,14 +25,14 @@ TEST(Push, Push)
     Stack c(g);
     for (int i = 0; i < 5; i++)
     {
-        c.push(g);
+        c+=g;
     }
     ASSERT_EQ(6, c.getTop());
     Stack h;
-    h.push(g);
+    h+=g;
     ASSERT_EQ(1, h.getTop());
-    Stack r(g,10);
-    ASSERT_ANY_THROW(r.push(g));
+    Stack r(g,SIZE);
+    ASSERT_ANY_THROW(r+=g);
 }
 
 TEST(Pop, pop) 
@@ -42,14 +42,14 @@ TEST(Pop, pop)
     Stack c(g);
     for (int i = 0; i < 5; i++)
     {
-        c.push(g);
+        c+=g;
     }
     Massive el;
-    c.pop(el);
+    c(el);
     ASSERT_EQ(5, c.getTop());
     ASSERT_EQ(el.getKey(), 10);
-    Stack check;
-    ASSERT_ANY_THROW(check.pop(el));
+    Stack th;
+    ASSERT_ANY_THROW(th(el));
 }
 
 TEST(Check, check)
