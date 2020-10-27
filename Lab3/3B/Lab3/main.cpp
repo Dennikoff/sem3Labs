@@ -4,15 +4,27 @@
 using namespace Stk;
 int main()
 {
-	Stack c;
-	try {
+	try
+	{
+		Stack j;
+		std::cout << "Creation of the Stack:\n Enter number of par:";
+		int h;
+		getInt(h);
+		if (h > j.getSIZE())
+			throw std::exception("Invalid Size");
+		Massive* mas = new Massive[h];
+		for (int i = 0; i < h; i++)
+		{
+			std::cin >> mas[i];
+		}
+		Stack c(mas, h);
 		while (true)
 		{
 			std::cout << "What do you want to do?" << std::endl;
 			std::cout << "0)Exit\n1)Push n elements\n2)Pop n elements\n3)Print your Stack\n4)Show the first element\n5)Check the status\n" << std::endl;
 			int q;
 			getInt(q);
-			switch(q)
+			switch (q)
 			{
 			case 1:
 				std::cout << "Enter n\n";
@@ -75,7 +87,7 @@ int main()
 			case 5:
 				//int k = 1;
 				int const k = c.check();
-				switch(k)
+				switch (k)
 				{
 				case -1:
 					std::cout << "\nStack is full\n\n";
@@ -92,9 +104,9 @@ int main()
 			if (q == 0) break;
 		}
 	}
-	catch (...)
+	catch (const std::exception& er)
 	{
-		std::cout << "Something wrong" << std::endl;
+		std::cout << std::endl << er.what() << std::endl << std::endl;
 	}
 	return 0;
 }

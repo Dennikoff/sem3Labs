@@ -7,17 +7,17 @@ namespace Stk {
 	{
 		std::cout << "Enter your key" << std::endl;
 		c >> a.key;
-		char s[SIZES*10];
+		char s[a.SIZES*10];
 		std::cout << "Enter your string" << std::endl;
 		c >> s;
-		for (int i = 0; i < SIZES; i++)
+		for (int i = 0; i < a.SIZES; i++)
 		{
 			a.str[i] = s[i];
 		}
-		if (strlen(a.str) < SIZES)
+		if (strlen(a.str) < a.SIZES)
 			a.str[strlen(a.str)] = '\0';
 		else
-			a.str[SIZES-1] = '\0';
+			a.str[a.SIZES-1] = '\0';
 		return c;
 	}
 
@@ -49,7 +49,7 @@ namespace Stk {
 	{
 		Massive elem;
 		c >> elem;
-		if (a.top > SIZE-1)
+		if (a.top > a.SIZE-1)
 			throw std::exception("Stack overflow");
 		a += elem;
 		return c;
@@ -77,6 +77,17 @@ namespace Stk {
 			if (top > SIZE)
 				throw std::exception("Stack overflow");
 			mas[top++] = elem;
+		}
+	}
+
+	Stack::Stack(Massive* elem, int n)
+	{
+		top = 0;
+		for (int i = 0; i < n; i++)
+		{
+			if (top > SIZE)
+				throw std::exception("Stack overflow");
+			mas[top++] = elem[i];
 		}
 	}
 
