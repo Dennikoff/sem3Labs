@@ -9,16 +9,16 @@ namespace Stk {
 		std::cin >> n;
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
-	Massive& Massive::getElem() 
+	Massive& Massive::getElem(std::istream& c) 
 	{
 		std::cout << "Enter your key" << std::endl;
-		std::cin >> this->key;
+		c >> this->key;
 		std::cout << "Enter your string" << std::endl;
-		std::cin >> str;
-		if (strlen(str) < 20)
+		c >> str;
+		if (strlen(str) < 21)
 			str[strlen(str)] = '\0';
 		else
-			str[19] = '\0';
+			str[20] = '\0';
 		return *this;
 	}
 
@@ -27,9 +27,19 @@ namespace Stk {
 		top = 0;
 		for (int i = 0; i < k; i++)
 		{
-			if (top > SIZE)
+			if (top > SIZE - 1)
 				throw std::exception("Stack overflow");
 			mas[top++] = elem;
+		}
+	}
+	Stack::Stack(Massive* elem, int k)
+	{
+		top = 0;
+		for (int i = 0; i < k; i++)
+		{
+			if (top > SIZE - 1)
+				throw std::exception("Stack overflow");
+			mas[top++] = elem[i];
 		}
 	}
 
@@ -41,17 +51,17 @@ namespace Stk {
 		return *this;
 	}
 
-	Stack& Stack::pushS()
+	Stack& Stack::pushS(std::istream& c)
 	{
 		Massive elem;
-		elem.getElem();
+		elem.getElem(c);
 		if (top > SIZE - 1)
 			throw std::exception("Stack overflow");
 		mas[top++] = elem;
 		return *this;
 	}
 
-	void Stack::Print() const
+	void Stack::Print(std::ostream& c) const
 	{	
 		if (top == 0)
 			throw std::exception("Stack is empty");
@@ -59,23 +69,24 @@ namespace Stk {
 		while(--g >= 0)
 		{	
 			Massive elem = mas[g];
-			elem.Print();
+			elem.Print(c);
 		}
 	}
-	void Stack::PrintFirst() const
+	void Stack::PrintFirst(std::ostream& c) const
 	{
 		if (top == 0)
 			throw std::exception("Stack is empty");
 		Massive h = mas[top - 1];
-		h.Print();
+		h.Print(c);
 	}
 
-	Stack& Stack::pop(Massive& elem)
+	Massive Stack::pop()
 	{
+		Massive elem;
 		if (top == 0)
 			throw std::exception("Stack is empty");
 		elem = mas[--top];
-		return *this;
+		return elem;
 	}
 
 	int Stack::check()

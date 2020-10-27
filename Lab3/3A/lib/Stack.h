@@ -1,6 +1,6 @@
 #ifndef LAB3_STACK_H
 #define LAB3_STACK_H
-int const SIZE = 5;
+int const SIZE = 10;
 namespace Stk {
 	//template<class T>
 	void getInt(int&);
@@ -16,8 +16,8 @@ namespace Stk {
 			return *this;
 		}
 		int getKey() { return key; }
-		Massive& getElem();
-		void Print() const
+		Massive& getElem(std::istream&);
+		void Print(std::ostream&) const
 		{
 			std::cout << "key: " << key << " str: " << str << ' ' << std::endl;
 		}
@@ -28,13 +28,14 @@ namespace Stk {
 	public: 
 		Stack() { top = 0; };
 		Stack(Massive, int k = 1); //Создаёт k одинаковых элементов
-		int getTop() { return top; }; //возвращает вершину(для гугл теста)
+		Stack(Massive*, int);
+		int getTop() const { return top; }; //возвращает вершину(для гугл теста)
 		Stack& push(Massive); //добавление элемента 
-		Stack& pushS(); //добавление элемента из потока
+		Stack& pushS(std:: istream&); //добавление элемента из потока
 		/*Stack& push(Massive, int);*/
-		void Print() const; //выводит весь стек в поток
-		void PrintFirst() const; //выводит только первый элемент
-		Stack& pop(Massive&); //выборка из стека 
+		void Print(std:: ostream&) const; //выводит весь стек в поток 
+		void PrintFirst(std::ostream&) const; //выводит только первый элемент
+		Massive pop(); //выборка из стека massive m = stack.pop();
 		int check(); //проверяет стек на заполненность(-1 полный; 0 частично заполнен; 1 пустой)
 	};
 }
