@@ -61,7 +61,7 @@ namespace Stk {
 		return *this;
 	}
 
-	void Stack::Print(std::ostream& c) const
+	std::ostream& Stack::Print(std::ostream& c) const
 	{	
 		if (top == 0)
 			throw std::exception("Stack is empty");
@@ -71,13 +71,15 @@ namespace Stk {
 			Massive elem = mas[g];
 			elem.Print(c);
 		}
+		return c;
 	}
-	void Stack::PrintFirst(std::ostream& c) const
+	std::ostream& Stack::PrintFirst(std::ostream& c) const
 	{
 		if (top == 0)
 			throw std::exception("Stack is empty");
 		Massive h = mas[top - 1];
 		h.Print(c);
+		return c;
 	}
 
 	Massive Stack::pop()

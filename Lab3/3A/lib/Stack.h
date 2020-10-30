@@ -17,9 +17,10 @@ namespace Stk {
 		}
 		int getKey() { return key; }
 		Massive& getElem(std::istream&);
-		void Print(std::ostream&) const
+		std::ostream& Print(std::ostream& c) const
 		{
-			std::cout << "key: " << key << " str: " << str << ' ' << std::endl;
+			c << "key: " << key << " str: " << str << ' ' << std::endl;
+			return c;
 		}
 	};
 	class Stack {
@@ -33,8 +34,8 @@ namespace Stk {
 		Stack& push(Massive); //добавление элемента 
 		Stack& pushS(std:: istream&); //добавление элемента из потока
 		/*Stack& push(Massive, int);*/
-		void Print(std:: ostream&) const; //выводит весь стек в поток 
-		void PrintFirst(std::ostream&) const; //выводит только первый элемент
+		std::ostream& Print(std:: ostream&) const; //выводит весь стек в поток 
+		std::ostream& PrintFirst(std::ostream&) const; //выводит только первый элемент
 		Massive pop(); //выборка из стека massive m = stack.pop();
 		int check(); //проверяет стек на заполненность(-1 полный; 0 частично заполнен; 1 пустой)
 	};

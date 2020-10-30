@@ -9,8 +9,6 @@ int main()
 		std::cout << "Creation of the Stack:\n Enter number of par:";
 		int h;
 		getInt(h);
-		if (h > SIZE)
-			throw std::exception("Invalid Size");
 		Massive* mas = new Massive[h];
 		for (int i = 0; i < h; i++)
 		{
