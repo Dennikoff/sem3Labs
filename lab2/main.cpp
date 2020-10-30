@@ -1,60 +1,112 @@
 #include <iostream>
-#include "../lib/Deltoida.h"
-using namespace Prog2;
-//using namespace std;
+#include "../lib/Stack.h"
+#include <string.h>
+using namespace Stk;
 int main()
 {
-    Deltoida c(1,0);
-    try
-    {
-        Deltoida c(10);
-    }
-    catch (const std::exception& ex)
-    {
-        std::cout << ex.what() << std::endl;
-        return 1;
-    }
-    int fl1 = 1;
-    double r;
-    const char *s = NULL;
-    while(fl1) {
-        std::cout << "Your X formula is:" << std::endl;
-        s = c.formulaX();
-        std::cout << s << std::endl;
-        std::cout << "Your Y formula is:" << std::endl;
-        s = c.formulaY();
-        std::cout << s << std::endl;
-        delete [] s;
-        std::cout << "LengthKas = " << c.getLengthKas() << std::endl;
-        std::cout << "Length of the line " << c.getLength() << std::endl;
-        std::cout << "S = " << c.getS() << std::endl;
-        int fl2 = 1;
-            try{
-                Point res = c.getXY();
-                if(res.y == 0)
-                    std::cout << "x = "<< res.x << ", y = " << res.y << std::endl;
-                else
-                    std::cout << "x = " << res.x << ", y1 = " << res.y << ", y2 = " << (-1) * res.y << std::endl;
-            }
-            catch(std::exception &ex)
-            {
-                std::cout << ex.what() << std::endl;
-            }
-        std::cout << "Enter new r and t to continue or press ctrl+Z to quit:" << std::endl;
-        double t;
-        std::cin >> r >> t;
-        if(std::cin.good()){
-            c.setT(t);
-            try{
-                c.setR(r);
-            }
-            catch (std::exception &ex)
-            {
-                std::cout << ex.what() << std::endl << std:: endl;
-            }
-        }
-        else
-            fl1 = 0;
-    }
-    return 0;
+	try
+	{
+		Stack j;
+		std::cout << "Creation of the Stack:\n Enter number of par:";
+		int h;
+		getInt(h);
+		if (h > j.getSIZE())
+			throw std::exception("Invalid Size");
+		Massive* mas = new Massive[h];
+		for (int i = 0; i < h; i++)
+		{
+			std::cin >> mas[i];
+		}
+		Stack c(mas, h);
+		while (true)
+		{
+			std::cout << "What do you want to do?" << std::endl;
+			std::cout << "0)Exit\n1)Push n elements\n2)Pop n elements\n3)Print your Stack\n4)Show the first element\n5)Check the status\n" << std::endl;
+			int q;
+			getInt(q);
+			switch (q)
+			{
+			case 1:
+				std::cout << "Enter n\n";
+				int n;
+				getInt(n);
+				try
+				{
+					for (int i = 0; i < n; i++)
+					{
+						std::cin >> c;
+					}
+				}
+				catch (const std::exception& er)
+				{
+					std::cout << std::endl << er.what() << std::endl << std::endl;
+				}
+				break;
+			case 2:
+				std::cout << "Enter n\n";
+				getInt(n);
+				try
+				{
+					for (int i = 0; i < n; i++)
+					{
+						Massive g;
+						c(g);
+						std::cout << g;
+					}
+					std::cout << std::endl;
+				}
+				catch (const std::exception& er)
+				{
+					std::cout << std::endl << er.what() << std::endl << std::endl;
+				}
+				break;
+			case 3:
+				try
+				{
+					std::cout << "\nYour Stack: \n";
+					std::cout << c;
+					std::cout << std::endl;
+				}
+				catch (const std::exception& er)
+				{
+					std::cout << std::endl << er.what() << std::endl << std::endl;
+				}
+				break;
+			case 4:
+				try
+				{
+					std::cout << "\nYour elem: ";
+					c.PrintFirst();
+					std::cout << std::endl;
+				}
+				catch (const std::exception& er)
+				{
+					std::cout << std::endl << er.what() << std::endl << std::endl;
+				}
+				break;
+			case 5:
+				//int k = 1;
+				int const k = c.check();
+				switch (k)
+				{
+				case -1:
+					std::cout << "\nStack is full\n\n";
+					break;
+				case 0:
+					std::cout << "\nStack is particaly filled\n\n";
+					break;
+				case 1:
+					std::cout << "\nStack is empty\n\n";
+					break;
+				}
+				break;
+			}
+			if (q == 0) break;
+		}
+	}
+	catch (const std::exception& er)
+	{
+		std::cout << std::endl << er.what() << std::endl << std::endl;
+	}
+	return 0;
 }
