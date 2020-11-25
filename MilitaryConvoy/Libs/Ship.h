@@ -12,7 +12,7 @@ namespace MC {
 		int health;
 		int price;
 	public:
-		Ship(std::string type, std::string name, Captain cap, int speed, int health, int price)
+		Ship(std::string type = "", std::string name = "", Captain cap = Captain(), int speed = 0, int health = 0, int price = 0)
 			:type(type), name(name), cap(cap), maxspeed(speed), speed(speed), maxhealth(health), health(health), price(price) {};
 		std::string getType() { return type; };
 		std::string getName() { return name; };

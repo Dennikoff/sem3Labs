@@ -11,8 +11,8 @@ namespace MC {
 		int ammo;
 		int price;
 	public:
-		BatArm(std::string type = "", int damage = 0, int ratefire = 0, int range = 0, int maxammo = 0, int ammo = 0, int price = 0) :type(type),
-			damage(damage), ratefire(ratefire), range(range), maxammo(maxammo), ammo(maxammo), price(price) {};
+		BatArm(std::string type = "", int damage = 0, int ratefire = 0, int range = 0, int ammo = 0, int price = 0) :type(type),
+			damage(damage), ratefire(ratefire), range(range), maxammo(ammo), ammo(ammo), price(price) {};
 		std::string getType() { return type; };
 		int getDamage() { return damage; };
 		int getRateFire() { return ratefire; };

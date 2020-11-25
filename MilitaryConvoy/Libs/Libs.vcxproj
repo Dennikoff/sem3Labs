@@ -146,9 +146,11 @@
     <ClInclude Include="MilitaryShiph.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="SupplyShip.h" />
+    <ClInclude Include="Table.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BattleArming.cpp" />
+    <ClCompile Include="DefendShip.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="SupplyShip.cpp" />
   </ItemGroup>
