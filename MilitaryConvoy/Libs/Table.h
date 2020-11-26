@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include "Ship.h"
+#include <vector>
 class TableIt;
 namespace MC {
 	struct Unit {
@@ -14,13 +15,19 @@ namespace MC {
 	class Table {
 		static const int SZ = 10;
 		int size;
-		Unit* tab;
+		std::vector<Unit> tab;
 	public:
-		friend class TableIt;
+		//friend class TableIt;
 		Ship& getShip(const std::string& name);
 		int getSize() { return size; };
-		Table& Insert(Ship&);
+		/*Table& Insert(Ship&);
 		Table& Delete(std::string name);
-		typedef TableIt iterator;
+		typedef TableIt iterator;*/
 	};
+
+	/*class TableIt
+	{
+		Unit* cuv;
+		Unit cur;
+	};*/
 }

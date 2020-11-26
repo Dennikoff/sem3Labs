@@ -20,13 +20,13 @@ namespace MC {
 		int getMaxAmmo() { return maxammo; };
 		int getAmmo() { return ammo; };
 		int getPrice() { return price; };
-		BatArm& setType(std::string key) { type = key;  return *this; };
-		BatArm& setDamage(int key) { damage = key;  return *this; };
-		BatArm& setRateFire(int key) { ratefire = key; return *this; };
-		BatArm& setRange(int key) { range = key; return *this; };
-		BatArm& setMaxAmmo(int key) { maxammo = key; return *this; };
-		BatArm& setAmmo(int key) { ammo = key; return *this; };
-		BatArm& setPrice(int key) { price = key; return *this; };
+		BatArm& setType(std::string key);
+		BatArm& setDamage(int key);
+		BatArm& setRateFire(int key);
+		BatArm& setRange(int key);
+		BatArm& setMaxAmmo(int key);
+		BatArm& setAmmo(int key);
+		BatArm& setPrice(int key);
 		int Atack();
 	};
 }

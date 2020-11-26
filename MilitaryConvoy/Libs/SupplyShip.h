@@ -5,12 +5,14 @@ namespace MC {
 	{
 		int maxweight;
 		int weight; //weight of the supply
-		short coeff; //0..100
+		short coeff; //0..100 = 0.00..1.00
 	public:
 		int getMaxWeight() { return maxweight; };
 		int getWeight() { return weight; };
-		SupShip& setWeight(int key) { weight = key; return *this; };
-		SupShip& setMaxWeight(int key) { maxweight = key;  return *this; };
+		short getCoeff() { return coeff; };
+		SupShip& setWeight(int key);
+		SupShip& setMaxWeight(int key);
+		SupShip& setCoeff(short key);
 		double CountSpeed() 
 		{
 			return getSpeed()*(1 - double((double(weight) / maxweight)*(coeff/100.00)));

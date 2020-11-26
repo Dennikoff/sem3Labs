@@ -152,6 +152,7 @@
   <ItemGroup>
     <ClCompile Include="BattleArming.cpp" />
     <ClCompile Include="DefendShip.cpp" />
+    <ClCompile Include="Mission.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="SupplyShip.cpp" />
     <ClCompile Include="Table.cpp" />
