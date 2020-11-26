@@ -144,6 +144,7 @@
     <ClInclude Include="DefendShip.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="MilitaryShiph.h" />
+    <ClInclude Include="Mission.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="SupplyShip.h" />
     <ClInclude Include="Table.h" />
@@ -153,6 +154,7 @@
     <ClCompile Include="DefendShip.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="SupplyShip.cpp" />
+    <ClCompile Include="Table.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

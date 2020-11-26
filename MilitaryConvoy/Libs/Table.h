@@ -17,6 +17,10 @@ namespace MC {
 		Unit* tab;
 	public:
 		friend class TableIt;
+		Ship& getShip(const std::string& name);
+		int getSize() { return size; };
+		Table& Insert(Ship&);
+		Table& Delete(std::string name);
 		typedef TableIt iterator;
 	};
 }

@@ -53,6 +53,6 @@ namespace MC {
 	
 	int DefShip::Shot(int x, int y)
 	{
-		
+		return 0;
 	}
 }
