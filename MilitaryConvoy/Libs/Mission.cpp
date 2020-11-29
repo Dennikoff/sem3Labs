@@ -10,13 +10,13 @@ namespace MC {
 		return *this; 
 	}
 
-	Mission& Mission::setTableC(Table& key) {
-		Convoy_tab = key;  
+	Mission& Mission::setTableC(std::vector<Unit>& key) {
+		tabC = key;  
 		return *this; 
 	}
 
-	Mission& Mission::setTableR(Table& key) {
-		Pirate_tab = key;  
+	Mission& Mission::setTableP(std::vector<Unit>& key) {
+		tabP = key;  
 		return *this; 
 	}
 
@@ -73,6 +73,60 @@ namespace MC {
 	Mission& Mission::setCoordPir(std::pair<int, int>& key) { 
 		Coordinates_Pir = key; 
 		return *this; 
+	}
+
+	Ship& Mission::getShipCon(std::string name)
+	{
+		
+		std::vector<Unit>::iterator it;
+		for (it = tabC.begin(); it != tabC.end(); ++it)
+		{
+			if (it->name == name)
+			{
+				break;
+			}
+		}
+			return it->ship;
+	}
+
+	Ship& Mission::getShipPir(std::string name)
+	{
+		std::vector<Unit>::iterator it;
+		for (it = tabP.begin(); it != tabP.end(); ++it)
+		{
+			if (it->name == name)
+			{
+				break;
+			}
+		}
+		Ship a("404");
+		if (it != tabP.end())
+			return it->ship;
+		else
+			return a;
+	}
+
+	Mission& Mission::createShipC(Ship a)//допилить
+	{
+		if (tabC.size())
+		{
+			Unit cur;
+			//cur->name = tabC.back().name;
+		}
+	}
+
+	Mission& Mission::createShipP(Ship a)
+	{
+
+	}
+	Mission& Mission::buyCon()
+	{
+		Ship a();
+	}
+	
+	Mission& Mission::sellCon()
+	{
+
 	}
 
 }

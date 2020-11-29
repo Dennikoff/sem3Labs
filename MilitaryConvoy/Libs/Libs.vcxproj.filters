@@ -30,9 +30,6 @@
     <ClInclude Include="DefendShip.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="List.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="MilitaryShiph.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -60,6 +57,9 @@
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
     <ClCompile Include="Mission.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="Captain.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
   </ItemGroup>

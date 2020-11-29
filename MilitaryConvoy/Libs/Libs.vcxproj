@@ -142,7 +142,6 @@
     <ClInclude Include="BattleArming.h" />
     <ClInclude Include="Captain.h" />
     <ClInclude Include="DefendShip.h" />
-    <ClInclude Include="List.h" />
     <ClInclude Include="MilitaryShiph.h" />
     <ClInclude Include="Mission.h" />
     <ClInclude Include="Ship.h" />
@@ -151,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BattleArming.cpp" />
+    <ClCompile Include="Captain.cpp" />
     <ClCompile Include="DefendShip.cpp" />
     <ClCompile Include="Mission.cpp" />
     <ClCompile Include="Ship.cpp" />

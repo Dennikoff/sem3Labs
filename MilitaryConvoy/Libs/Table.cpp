@@ -1,17 +1,17 @@
 #include "Table.h"
 namespace MC {
-
-	Ship& Table::getShip(const std::string& name)
+	
+	std::vector<Unit>::iterator Table::getShip(const std::string& name)
 	{
-		for (int i = 0; i < size; ++i)
+		std::vector<Unit>::iterator it;
+		for (it = tab.begin(); it != tab.end(); ++it)
 		{
-			if (tab[i].name == name)
+			if (it->name == name)
 			{
-				return tab[i].ship;
+				break;
 			}
 		}
-		Ship a("404");
-		return a;
+		return it;
 	}
 
 	//Table& Table::Insert(Ship& ship) //не готово
