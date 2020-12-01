@@ -11,9 +11,9 @@ namespace MC {
 			int a = 1;
 			while (a)
 			{
-				std::cout << "Enter pllace:\n0)To Exit\n1)Bow\n2)Board Right\n3)Board Left\n4)Sterm\n>>>";
+				std::cout << "Enter pllace:\n0)To Exit\n1)Bow\n2)Board Right\n3)Board Left\n4)Stern\n>>>";
 				std::cin >> a;
-				if (!a) exit;
+				if (!a) return *this;
 				int ammo, damage, price, range, ratefire;
 				std::string type;
 				std::cout << "Enter Stats\n Type->";
@@ -41,7 +41,7 @@ namespace MC {
 					mp.emplace("BoardL", weapon);
 					break;
 				case 4:
-					mp.emplace("Sterm", weapon);
+					mp.emplace("Stern", weapon);
 					break;
 				default:
 					break;

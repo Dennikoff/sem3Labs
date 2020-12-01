@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <iostream>
-#include "Ship.h"
+#include "MilitaryShiph.h"
 #include <vector>
 class TableIt;
 namespace MC {
