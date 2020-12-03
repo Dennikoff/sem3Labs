@@ -1,24 +1,5 @@
-﻿  BattleArming.cpp
-  Captain.cpp
-  DefendShip.cpp
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\DefendShip.h(11,27): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\DefendShip.cpp(16,13): warning C4551: в вызове функции отсутствует список аргументов
-  Mission.cpp
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\SupplyShip.h(11,27): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\DefendShip.h(11,27): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(147,12): error C2371: sh: переопределение; различные базовые типы
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(143): message : см. объявление "sh"
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(151,12): error C2371: sh: переопределение; различные базовые типы
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(143): message : см. объявление "sh"
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(157,7): warning C4091: : пропускается слева от "MC::Unit", когда ни одна переменная не объявлена
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(146,3): error C2360: пропуск инициализации "sh" из-за метки "case"
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(143): message : см. объявление "sh"
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(150,3): error C2360: пропуск инициализации "sh" из-за метки "case"
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(147): message : см. объявление "sh"
-  Ship.cpp
-  SupplyShip.cpp
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\SupplyShip.h(11,27): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+﻿  Mission.cpp
   Table.cpp
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\SupplyShip.h(11,27): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\DefendShip.h(11,27): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
   Создание кода...
+C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(170): warning C4715: MC::Mission::buyCon: значение возвращается не при всех путях выполнения
+  Libs.vcxproj -> C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Debug\Libs.lib

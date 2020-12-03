@@ -1,2 +1,4 @@
 C:\Users\dhark\source\sem3Labs\MilitaryConvoy\Debug\Libs.pdb
 C:\Users\dhark\source\sem3Labs\MilitaryConvoy\Libs\Debug\Libs.pdb
+C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Debug\Libs.pdb
+C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\Debug\Libs.pdb

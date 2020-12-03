@@ -7,7 +7,7 @@ class TableIt;
 namespace MC {
 	struct Unit {
 		std::string name;
-		Ship ship;
+		Ship* ship;
 		std::pair<int, int> coordinates;
 	};
 

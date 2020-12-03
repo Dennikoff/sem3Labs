@@ -1,6 +1,6 @@
 #include "DefendShip.h"
 namespace MC {
-	DefShip& DefShip::Modify(std::map<std::string, BatArm> map)
+	DefShip& DefShip::Modify(std::map<std::string, BatArm> map,long& money)
 	{
 		if (map.size())
 		{
