@@ -116,30 +116,29 @@ namespace MC {
 			return a;
 	}
 
-	//Mission& Mission::createShipC(Ship a)//допилить
-	//{
-	//	if (tabC.size())
-	//	{
-	//		Unit cur;
-	//		//cur->name = tabC.back().name;
-	//	}
-	//}
+	Mission& Mission::buyCon()//допилить
+	{
+		if (MoneyLeft < 100)
+		{
+			"Not Enough Money\n";
+		}
+	}
 
-	/*Mission& Mission::createShipP(Ship a)
+	Mission& Mission::createShipP(Ship a)
 	{
 
-	}*/
+	}
 
-	Mission& Mission::buyCon()
+	Unit Mission::createShipC()
 	{
-		if (MoneyLeft < 100) {
+		/*if (MoneyLeft < 100) {
 			std::cout << "Not Enough Money\n";
 			return *this;
-		}
+		}*/
 		std::cout << "What type of ship do you want to add:\n1)Empty\n2)Supply ship\n3)Defend ship\n";
 		int choice;
 		Ship* a = new Ship("Ship", "a", Captain("Ivan", "Ivanov", "Ivanovich"), 1, 10, 100);
-		MoneyLeft -= 100;
+		//MoneyLeft -= 100;
 		SupShip* sup;
 		DefShip* def;
 		Unit un;
@@ -168,8 +167,8 @@ namespace MC {
 			nm++;
 			un.name = nm;
 		}
-		tabC.push_back(un);
-		return *this;
+		//tabC.push_back(un);
+		//return *this;
 	}
 	
 	Mission& Mission::sellCon(std::string name)
@@ -194,8 +193,35 @@ namespace MC {
 			if (it->name == name)
 			{
 				Ship* sh = it->ship;
-				DefShip* curShip = dynamic_cast<DefShip*>(sh);
-				curShip->Modify(curShip->getMap(), MoneyLeft);
+				DefShip* curShip = dynamic_cast<DefShip*>(it->ship);
+				if(curShip)
+					curShip->Modify(curShip->getMap(), MoneyLeft);
+			}
+		}
+		return *this;
+	}
+
+	Mission& Mission::destroyShipCon(std::string name)
+	{
+		std::vector<Unit>::iterator it;
+		for (it = tabC.begin(); it != tabC.end(); ++it)
+		{
+			if (it->name == name)
+			{
+				tabC.erase(it);
+			}
+		}
+		return *this;
+	}
+
+	Mission& Mission::destroyShipCon(std::string name)
+	{
+		std::vector<Unit>::iterator it;
+		for (it = tabP.begin(); it != tabP.end(); ++it)
+		{
+			if (it->name == name)
+			{
+				tabP.erase(it);
 			}
 		}
 		return *this;

@@ -5,7 +5,7 @@ namespace MC {
 	class Mission {
 		Captain cap;
 		std::vector<Unit> tabC;
-		std::vector<Unit> tabP;
+		std::vector<Unit> tabP; ////
 		long StartMoney;
 		long MoneyLeft;
 		long FullWeight;
@@ -42,15 +42,15 @@ namespace MC {
 		//Ship& setShipCon(std::string name);
 		Ship* getShipPir(std::string name);
 		//Ship& setShipPir(std::string name);
-		Mission& createShipC(Ship);
-		Mission& createShipP(Ship);
+		Unit createShipC();
+		Unit createShipP();
 		Mission& buyCon();
 		Mission& sellCon(std::string);
 		Mission& buyPir();
 		Mission& sellPir();
 		Mission& buyWepon(std::string name);
 		Mission& sellWeapon();
-		Mission& destroyShipCon();
+		Mission& destroyShipCon(std::string name);
 		Mission& destroyShipPir();
 		Mission& loadShip();
 		Mission& unloadShip();

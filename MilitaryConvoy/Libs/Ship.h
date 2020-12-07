@@ -14,7 +14,7 @@ namespace MC {
 		int price;
 	public:
 		Ship() :type(DefaultShip.type), name(DefaultShip.name), cap(DefaultShip.cap), maxspeed(DefaultShip.speed), speed(DefaultShip.speed), maxhealth(DefaultShip.health), health(DefaultShip.health), price(DefaultShip.price) {}
-		Ship(std::string type) : type(type) {};
+		Ship(std::string type) : type(type), name(""), cap(Captain()) {};
 		Ship(std::string type , std::string name, Captain cap, double speed, int health, int price)
 			:type(type), name(name), cap(cap), maxspeed(speed), speed(speed), maxhealth(health), health(health), price(price) {};
 		static void setDefaultShip(std::string type, std::string name, Captain cap, int speed, int health, int price)
