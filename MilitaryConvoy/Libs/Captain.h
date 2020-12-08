@@ -18,5 +18,6 @@ namespace MC {
 		Captain& setName(std::string);
 		Captain& setSurname(std::string);
 		Captain& setFathername(std::string);
+		friend std::ostream& operator <<(std::ostream& c, Captain cap);
 	};
 }

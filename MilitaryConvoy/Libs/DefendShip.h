@@ -3,7 +3,7 @@
 #include "Ship.h"
 #include "BattleArming.h"
 namespace MC {
-	class DefShip : public Ship
+	class DefShip : virtual public Ship
 	{
 		std::map <std::string, BatArm> mp;
 	public:
@@ -13,6 +13,6 @@ namespace MC {
 		std::map<std::string, BatArm> getMap() { return mp; }
 		DefShip& Modify(std::map<std::string, BatArm> map,long& money);
 		int Shot(int x, int y);
-
+		std::ostream& print(std::ostream& c)
 	};
 }

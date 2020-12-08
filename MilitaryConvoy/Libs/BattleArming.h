@@ -28,5 +28,6 @@ namespace MC {
 		BatArm& setAmmo(int key);
 		BatArm& setPrice(int key);
 		int Atack();
+		friend std::ostream& operator <<(std::ostream& c, BatArm a);
 	};
 }

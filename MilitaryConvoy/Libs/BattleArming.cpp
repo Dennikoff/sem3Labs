@@ -67,4 +67,14 @@ namespace MC {
 		}
 		return 0;
 	}
+
+	std::ostream& operator <<(std::ostream& c, BatArm a)
+	{
+		c << "Type = " << a.type << std::endl;
+		c << "Maxammo/ammo " << a.maxammo << "/" << a.ammo << std::endl;
+		c << "Damage = " << a.damage << std::endl;
+		c << "Range = " << a.range << std::endl;
+		c << "RateFire = " << a.ratefire << std::endl;
+		c << "Price = " << a.price << std::endl;
+	}
 }

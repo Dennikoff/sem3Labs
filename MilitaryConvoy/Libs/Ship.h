@@ -1,9 +1,9 @@
 #pragma once 
 #include "Captain.h"
 #include <iostream>
+
 namespace MC {
 	class Ship {
-		static Ship DefaultShip;
 		std::string type;
 		std::string name;
 		Captain cap;
@@ -13,16 +13,13 @@ namespace MC {
 		int health;
 		int price;
 	public:
-		Ship() :type(DefaultShip.type), name(DefaultShip.name), cap(DefaultShip.cap), maxspeed(DefaultShip.speed), speed(DefaultShip.speed), maxhealth(DefaultShip.health), health(DefaultShip.health), price(DefaultShip.price) {}
-		Ship(std::string type) : type(type), name(""), cap(Captain()) {};
+		Ship() :type("LichKing"), name("Warcraft"), cap(Captain("Ivanov","Ivan","Ivanovich",1)), maxspeed(15), speed(15), maxhealth(100), health(100), price(300) {}
+		Ship(std::string type) : Ship() { Ship::type = type; };
 		Ship(std::string type , std::string name, Captain cap, double speed, int health, int price)
 			:type(type), name(name), cap(cap), maxspeed(speed), speed(speed), maxhealth(health), health(health), price(price) {};
-		static void setDefaultShip(std::string type, std::string name, Captain cap, int speed, int health, int price)
-		{
-			DefaultShip.type = type; DefaultShip.name = name; DefaultShip.cap = cap; DefaultShip.maxspeed = speed; DefaultShip.speed = speed; DefaultShip.maxhealth = health; DefaultShip.health = health; DefaultShip.price = price;
-		};
 		std::string getType() const { return type; };
 		std::string getName() const { return name; };
+		Captain getCaptain() const { return cap; }
 		double getMaxSpeed() const { return maxspeed; };
 		double getSpeed() const { return speed; };
 		int getMaxHealth() const { return maxhealth; };
@@ -36,5 +33,10 @@ namespace MC {
 		Ship& setHealth(int key);
 		Ship& setPrice(int key);
 		Ship& takeDamage(int);
+		virtual std::ostream& print(std::ostream& c);
+		friend std::ostream& operator <<(std::ostream& c, Ship* sh)
+		{
+			sh->print(c);
+		} 
 	};
 }

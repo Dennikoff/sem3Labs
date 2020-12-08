@@ -142,7 +142,7 @@
     <ClInclude Include="BattleArming.h" />
     <ClInclude Include="Captain.h" />
     <ClInclude Include="DefendShip.h" />
-    <ClInclude Include="MilitaryShiph.h" />
+    <ClInclude Include="MilitaryShip.h" />
     <ClInclude Include="Mission.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="SupplyShip.h" />

@@ -29,5 +29,15 @@ namespace MC{
 		return *this;
 	}
 
-
+	std::ostream& SupShip::print(std::ostream& c)
+	{
+		c << "type = " << getType() << std::endl;
+		c << "name = " << getName() << std::endl;
+		c << "Captain = " << getCaptain();
+		c << "maxhealth/health = " << getMaxHealth() << "/" << getHealth() << std::endl;
+		c << "maxspeed/speed = " << getMaxSpeed() << "/" << getSpeed() << std::endl;
+		c << "price = " << getPrice() << std::endl;
+		c << "maxweight/weight = " << maxweight << "/" << weight << std::endl;
+		c << "coeff = " << coeff << std::endl << std::endl;
+	}
 }

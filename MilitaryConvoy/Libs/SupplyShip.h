@@ -1,7 +1,7 @@
 #pragma once
 #include "Ship.h"
 namespace MC {
-	class SupShip : public Ship
+	class SupShip : virtual public Ship
 	{
 		int maxweight;
 		int weight; //weight of the supply
@@ -16,6 +16,7 @@ namespace MC {
 		SupShip& setWeight(int key);
 		SupShip& setMaxWeight(int key);
 		SupShip& setCoeff(short key);
+		std::ostream& print(std::ostream& c);
 		double countSpeed() 
 		{
 			return getSpeed()*(1 - double((double(weight) / maxweight)*(coeff/100.00)));

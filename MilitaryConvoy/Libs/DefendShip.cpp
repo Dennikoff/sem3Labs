@@ -50,9 +50,25 @@ namespace MC {
 		}
 		return *this;
 	}
-	
+
 	int DefShip::Shot(int x, int y)
 	{
 		return 0;
+	}
+
+	std::ostream& DefShip::print(std::ostream& c)
+	{
+		c << "Type = " << getType() << std::endl;
+		c << "Name = " << getName() << std::endl;
+		c << "Captain = " << getCaptain();
+		c << "Maxhealth/health = " << getMaxHealth() << "/" << getHealth() << std::endl;
+		c << "Maxspeed/speed = " << getMaxSpeed() << "/" << getSpeed() << std::endl;
+		c << "Price = " << getPrice() << std::endl;
+		std::map<std::string, BatArm>::iterator it;
+		for (it = mp.begin(); it != mp.end(); ++it)
+		{
+			c << "\t" << it->first << ": " << std::endl << it->second << std::endl;
+		}
+		c << std::endl;
 	}
 }

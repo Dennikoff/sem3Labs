@@ -51,7 +51,7 @@ namespace MC{
 			price = key;
 		else
 			throw std::invalid_argument("Invalid argument");
-		return *this; 
+		return *this;
 	}
 
 	Ship& Ship::takeDamage(int k)
@@ -65,5 +65,15 @@ namespace MC{
 			health = 0;
 		}
 		return *this;
+	}
+
+	std::ostream& Ship::print(std::ostream& c)
+	{
+		c << "type = " << type << std::endl;
+		c << "name = " << name << std::endl;
+		c << "Captain = " << cap;
+		c << "maxhealth/health = " << maxhealth << "/" << health << std::endl;
+		c << "maxspeed/speed = " << maxspeed << "/" << speed << std::endl;
+		c << "price = " << price << std::endl << std::endl;
 	}
 }
