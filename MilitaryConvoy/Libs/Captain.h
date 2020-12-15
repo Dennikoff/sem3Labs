@@ -8,7 +8,8 @@ namespace MC {
 		std::string surname;
 		std::string fathername;
 	public:
-		Captain(std::string name = "", std::string surname = "", std::string fathername = "", int rank = 1)
+		Captain() : name("Ivan"), surname("Ivanov"), fathername("Ivanovich"), rank(1) {};
+		Captain(std::string name , std::string surname , std::string fathername , int rank ) //stl
 			:name(name), surname(surname), fathername(fathername), rank(rank) {};
 		int getRank() { return rank; };
 		std::string getName() { return name; };

@@ -152,6 +152,7 @@
     <ClCompile Include="BattleArming.cpp" />
     <ClCompile Include="Captain.cpp" />
     <ClCompile Include="DefendShip.cpp" />
+    <ClCompile Include="MilitaryShip.cpp" />
     <ClCompile Include="Mission.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="SupplyShip.cpp" />

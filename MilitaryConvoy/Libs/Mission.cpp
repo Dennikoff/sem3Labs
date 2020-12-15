@@ -20,12 +20,12 @@ namespace MC {
 		return *this; 
 	}
 
-	Mission& Mission::setTableC(std::vector<Unit>& key) {
+	Mission& Mission::setTableC(Table& key) {
 		tabC = key;  
 		return *this; 
 	}
 
-	Mission& Mission::setTableP(std::vector<Unit>& key) {
+	Mission& Mission::setTableP(Table& key) {
 		tabP = key;  
 		return *this; 
 	}
@@ -54,17 +54,17 @@ namespace MC {
 		return *this; 
 	}
 
-	Mission& Mission::setMaxShip_Con(int& key) {
+	Mission& Mission::setMaxShipCon(int& key) {
 		if (key > 0)
-			MaxShip_Con = key;
+			MaxShipCon = key;
 		else
 			throw std::invalid_argument("Invalid argument");
 		return *this; 
 	}
 
-	Mission& Mission::setMaxShip_Pir(int& key) {
+	Mission& Mission::setMaxShipPir(int& key) {
 		if (key > 0)
-			MaxShip_Pir = key;
+			MaxShipPir = key;
 		else
 			throw std::invalid_argument("Invalid argument");
 		return *this; 
@@ -85,95 +85,96 @@ namespace MC {
 		return *this; 
 	}
 
-	Ship* Mission::getShipCon(std::string name)
+	Ship* Mission::getShipCon(const std::string& name)
 	{
 		
-		std::vector<Unit>::iterator it;
-		for (it = tabC.begin(); it != tabC.end(); ++it)
-		{
-			if (it->name == name)
-			{
-				break;
-			}
-		}
+		auto it = tabC.getShip(name);
+		if (it != tabC.end())
 			return it->ship;
+		else
+			throw std::out_of_range("Ship not found\n");
 	}
 
-	Ship* Mission::getShipPir(std::string name)
+	Ship* Mission::getShipPir(const std::string& name)
 	{
-		std::vector<Unit>::iterator it;
-		for (it = tabP.begin(); it != tabP.end(); ++it)
-		{
-			if (it->name == name)
-			{
-				break;
-			}
-		}
-		Ship* a = new Ship("404");
+		auto it = tabP.getShip(name);
 		if (it != tabP.end())
 			return it->ship;
 		else
-			return a;
+			throw std::out_of_range("Ship not found\n");
 	}
 
-	Mission& Mission::buyCon()//допилить
+
+	Mission& Mission::createShipP(Ship* a)
 	{
-		if (MoneyLeft < 100)
+		DefShip* def;
+		Unit un;
+		def = new DefShip();
+		un.ship = def;
+		un.coordinates = Coordinates_Pir;
+		if (tabP.size() == 0)
+			un.name = "1";
+		else
 		{
-			"Not Enough Money\n";
+			Unit cur = tabC.back();
+			int nm = stoi(cur.name);
+			nm++;
+			char* str = new char[10];
+			_itoa_s(nm,str,10,10);
+			un.name = std::string(str);
 		}
+		tabC.push_back(un);
+		return *this;
 	}
 
-	Mission& Mission::createShipP(Ship a)
-	{
-
-	}
-
-	Unit Mission::createShipC()
+	Mission& Mission::buyCon(const int& choice)
 	{
 		/*if (MoneyLeft < 100) {
 			std::cout << "Not Enough Money\n";
 			return *this;
 		}*/
-		std::cout << "What type of ship do you want to add:\n1)Empty\n2)Supply ship\n3)Defend ship\n";
-		int choice;
-		Ship* a = new Ship("Ship", "a", Captain("Ivan", "Ivanov", "Ivanovich"), 1, 10, 100);
-		//MoneyLeft -= 100;
+		/*std::cout << "What type of ship do you want to add:\n1)Empty\n2)Supply ship\n3)Defend ship\n";*/
 		SupShip* sup;
 		DefShip* def;
 		Unit un;
-		std::cin >> choice;
 		switch (choice)
 		{
 		case 1:
-			un.ship = a;
+			sup = new SupShip(100, 25);
+			un.ship = sup;
+			MoneyLeft -= sup->getPrice();
 			break;
 		case 2:
-			sup = new SupShip(*a, 100, 25);
-			un.ship = sup;
-			break;
-		case 3:
-			def = new DefShip(*a, CreateEmptyMap());
+			def = new DefShip();
 			un.ship = def;
+			MoneyLeft -= def->getPrice();
 			break;
 		}
-		un.coordinates = std::make_pair(0, 0);
+		un.coordinates = Coordinates_A;
 		if (tabC.size() == 0)
 			un.name = "a";
 		else
 		{
 			Unit cur = tabC.back();
-			char nm = cur.name[1];
+			char nm = cur.name[0];
 			nm++;
 			un.name = nm;
 		}
-		//tabC.push_back(un);
-		//return *this;
+		tabC.push_back(un);
+		return *this;
 	}
 	
 	Mission& Mission::sellCon(std::string name)
 	{
-		std::vector<Unit>::iterator it;
+		if (tabC.getShip(name) != tabC.end())
+		{
+			MoneyLeft += tabC.getShip(name)->ship->getPrice();
+			tabC.erase(name);
+			
+		}
+		else
+			throw std::out_of_range("Ship not found\n");
+		/*std::vector<Unit>::iterator it;
 		for (it = tabC.begin(); it != tabC.end(); ++it)
 		{
 			if (it->name == name)
@@ -181,49 +182,108 @@ namespace MC {
 				MoneyLeft += it->ship->getPrice();
 				tabC.erase(it);
 			}
-		}
+		}*/
 		return *this;
 	}
 
-	Mission& Mission::buyWepon(std::string name)
+	Mission& Mission::buyWepon(const std::string& name, const std::string& place, BatArm& weapon)
 	{
-		std::vector<Unit>::iterator it;
-		for (it = tabC.begin(); it != tabC.end(); ++it)
+		DefShip* sh = dynamic_cast<DefShip*>(tabC.getShip(name)->ship);
+		if (sh)
+		{
+			sh->Modify(place, weapon);
+			MoneyLeft -= weapon.getPrice();
+		}
+		else
+			throw std::out_of_range("Ship not found\n");
+		/*for (it = tabC.begin(); it != tabC.end(); ++it)
 		{
 			if (it->name == name)
 			{
 				Ship* sh = it->ship;
 				DefShip* curShip = dynamic_cast<DefShip*>(it->ship);
 				if(curShip)
-					curShip->Modify(curShip->getMap(), MoneyLeft);
+					curShip->Modify(place,weapon);
 			}
-		}
+		}*/
 		return *this;
 	}
 
-	Mission& Mission::destroyShipCon(std::string name)
+	Mission& Mission::destroyShipCon(const std::string& name)
 	{
-		std::vector<Unit>::iterator it;
+		if (tabC.getShip(name) != tabC.end()) 
+		{
+			tabC.erase(name);
+		}
+		else
+			std::cout << "Ship not found";
+		/*std::vector<Unit>::iterator it;
 		for (it = tabC.begin(); it != tabC.end(); ++it)
 		{
 			if (it->name == name)
 			{
 				tabC.erase(it);
 			}
-		}
+		}*/
 		return *this;
 	}
 
-	Mission& Mission::destroyShipCon(std::string name)
+	Mission& Mission::destroyShipPir(const std::string& name)
 	{
-		std::vector<Unit>::iterator it;
-		for (it = tabP.begin(); it != tabP.end(); ++it)
+		if (tabP.getShip(name) != tabP.end())
 		{
-			if (it->name == name)
-			{
-				tabP.erase(it);
-			}
+			tabP.erase(name);
 		}
+		else
+			std::cout << "Ship not found";
 		return *this;
+	}
+
+	Mission& Mission::sellWeapon(const std::string& name, const std::string& place)
+	{
+
+		DefShip* sh = dynamic_cast<DefShip*>(tabC.getShip(name)->ship);
+		if (sh)
+		{
+			std::map<std::string, BatArm>::iterator it = sh->getMap().find(place);
+			if (it != sh->getMap().end())
+			{
+				MoneyLeft += it->second.getPrice();
+				sh->getMap().erase(it);
+			}
+			else
+				throw std::out_of_range("Weapon not found\n");
+		}
+		else
+			throw std::out_of_range("Ship not found\n");
+
+	}
+
+	Mission& Mission::loadShip(const std::string& name, int count)
+	{
+		SupShip* sh = dynamic_cast<SupShip*>(tabC.getShip(name)->ship);
+		if (sh)
+		{
+			if (sh->getMaxWeight() - sh->getWeight() >= count)
+				sh->setWeight(sh->getWeight() + count);
+			else
+				throw std::out_of_range("Not enough place in ship\n");
+		}
+		else 
+			throw std::out_of_range("Ship not found\n");
+	}
+
+	Mission& Mission::unloadShip(const std::string& name, int count)
+	{
+		SupShip* sh = dynamic_cast<SupShip*>(tabC.getShip(name)->ship);
+		if (sh)
+		{
+			if (sh->getWeight() >= count)
+				sh->setWeight(sh->getWeight() - count);
+			else
+				sh->setWeight(0);
+		}
+		else
+			throw std::out_of_range("Ship not found\n");
 	}
 }

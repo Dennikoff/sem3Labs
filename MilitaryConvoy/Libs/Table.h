@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <iostream>
-#include "MilitaryShiph.h"
+#include "MilitaryShip.h"
 #include <vector>
 class TableIt;
 namespace MC {
@@ -9,26 +9,28 @@ namespace MC {
 		std::string name;
 		Ship* ship;
 		std::pair<int, int> coordinates;
+		Unit()  {};
 	};
-
 	class Table {
-		/*static const int SZ = 10;
-		int size;*/
-		//std::vector<Unit> tab;
-	public:
+		friend class TableIt;
 		std::vector<Unit> tab;
+	public:
 		std::vector<Unit>::iterator getShip(const std::string& name);
-		//friend class TableIt;
-		//Ship& getShip(const std::string& name);
+		typedef TableIt iterator;
+		std::vector<Unit>::iterator begin();
+		std::vector<Unit>::iterator end();
+		int size() { return tab.size(); }
+		//std::vector<Unit>::iterator find(std::string name);
 		//int getSize() { return size; };
-		/*Table& Insert(Ship&);
-		Table& Delete(std::string name);
-		typedef TableIt iterator;*/
+		Table& push_back(Unit& );
+		Table& erase(const std::string& name);
+		Unit& back() { return tab.back(); }
 	};
 
-	/*class TableIt
+	class TableIt
 	{
-		Unit* cuv;
-		Unit cur;
-	};*/
+		Unit* cur;
+	public:
+		TableIt() :cur(0) {}
+	};
 }

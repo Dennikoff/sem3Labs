@@ -1,12 +1,11 @@
 #include "../Libs/Mission.h"
-int a = 2;
-int& f(int x)
-{
-	return a += x;
-}
+#include <iostream>
+using namespace MC;
 int main()
 {
-	std::cout << f(2) << " | a = " << a << std::endl;
-	f(1) = 10;
-	std::cout << "a = " << a << std::endl;
+	Ship* def = new DefShip("Type", "name", Captain(), 10, 100, 15);
+	std::cout << def;
+	Ship* sup = new SupShip();
+	std::cout << sup;
+	return 0;
 }

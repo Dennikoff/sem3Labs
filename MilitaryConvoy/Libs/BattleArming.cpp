@@ -76,5 +76,6 @@ namespace MC {
 		c << "Range = " << a.range << std::endl;
 		c << "RateFire = " << a.ratefire << std::endl;
 		c << "Price = " << a.price << std::endl;
+		return c << std::endl;
 	}
 }

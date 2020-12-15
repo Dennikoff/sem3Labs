@@ -67,7 +67,7 @@ namespace MC{
 		return *this;
 	}
 
-	std::ostream& Ship::print(std::ostream& c)
+	/*std::ostream& Ship::print(std::ostream& c)
 	{
 		c << "type = " << type << std::endl;
 		c << "name = " << name << std::endl;
@@ -75,5 +75,5 @@ namespace MC{
 		c << "maxhealth/health = " << maxhealth << "/" << health << std::endl;
 		c << "maxspeed/speed = " << maxspeed << "/" << speed << std::endl;
 		c << "price = " << price << std::endl << std::endl;
-	}
+	}*/
 }

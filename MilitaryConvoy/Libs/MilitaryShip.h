@@ -5,8 +5,8 @@ namespace MC {
 	class MilShip : public DefShip, public SupShip
 	{
 	public:
-		/*MilShip(Ship& a, int weight, short coeff, std::map<std::string, BatArm> mp)
-			: Ship(a), weight(weight), maxweight(weight), map(mp) {}*/
-		
+		std::ostream& print(std::ostream& c) override;
+		MilShip(DefShip sh, int weight, int coeff) :DefShip(sh), SupShip() {}
+
 	};
 }

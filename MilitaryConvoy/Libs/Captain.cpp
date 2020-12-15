@@ -41,6 +41,6 @@ namespace MC {
 	std::ostream& operator <<(std::ostream& c, Captain cap)
 	{
 		c << "Surname: " << cap.surname << "|Name: " << cap.name << "|Fathername: " << cap.fathername << std::endl;
-		return c;
+		return c << std::endl;
 	}
 }

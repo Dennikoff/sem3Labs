@@ -1,18 +1,5 @@
-﻿  BattleArming.cpp
-  DefendShip.cpp
-  Mission.cpp
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(124,3): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(128,2): error C2511: MC::Mission &MC::Mission::createShipP(MC::Ship): перегруженная функция-член не найдена в "MC::Mission"
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\Mission.h(5): message : см. объявление "MC::Mission"
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(156,43): error C2664: "MC::DefShip::DefShip(MC::DefShip &&)": невозможно преобразовать аргумент 1 из "MC::Ship" в "std::string"
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(156,22): message : Для выполнения данного преобразования нет доступного оператора преобразования, определенного пользователем, или вызов оператора невозможен
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\DefendShip.h(10,3): message : см. объявление "MC::DefShip::DefShip"
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(196,55): error C2683: dynamic_cast: "MC::Ship" не является полиморфным типом
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\Ship.h(5): message : см. объявление "MC::Ship"
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(218,2): error C2084: функция "MC::Mission &MC::Mission::destroyShipCon(std::string)" уже имеет текст реализации
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(204): message : см. предыдущее определение "destroyShipCon"
-  Ship.cpp
-  SupplyShip.cpp
-  Table.cpp
-  Создание кода...
-C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\SupplyShip.cpp : fatal error C1090: Произошел сбой при вызове API PDB, код ошибки "3": C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Libs\Debug\Libs.pdb
+﻿  Mission.cpp
+C:\Users\dhark\source\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(260): warning C4715: MC::Mission::sellWeapon: значение возвращается не при всех путях выполнения
+C:\Users\dhark\source\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(274): warning C4715: MC::Mission::loadShip: значение возвращается не при всех путях выполнения
+C:\Users\dhark\source\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(288): warning C4715: MC::Mission::unloadShip: значение возвращается не при всех путях выполнения
+  Libs.vcxproj -> C:\Users\dhark\source\sem3Labs\MilitaryConvoy\Debug\Libs.lib

@@ -7,12 +7,12 @@ namespace MC {
 	{
 		std::map <std::string, BatArm> mp;
 	public:
-		DefShip(std::string type = "", std::string name = "", Captain cap = Captain(), double speed = 0, int health = 0, int price = 0, std::map< std::string, BatArm > map = std::map<std::string, BatArm>())
+		DefShip(std::string type, std::string name, Captain cap, double speed, int health, int price, std::map< std::string, BatArm > map = std::map<std::string, BatArm>())
 			:Ship(type, name, cap, speed, health, price), mp(map) {};
-		DefShip(Ship& a, std::map < std::string, BatArm >& map) : Ship(a), mp(map) {};
-		std::map<std::string, BatArm> getMap() { return mp; }
-		DefShip& Modify(std::map<std::string, BatArm> map,long& money);
+		DefShip() : Ship(), mp() {};
+		std::map<std::string, BatArm>& getMap() { return mp; }
+		DefShip& Modify(const std::string& place,const BatArm& weapon);
 		int Shot(int x, int y);
-		std::ostream& print(std::ostream& c)
+		virtual std::ostream& print(std::ostream& c) override;
 	};
 }
