@@ -39,6 +39,6 @@ namespace MC {
 			sh->print(c);
 			return c;
 		} 
-		/*virtual ~Ship() {};*/
+		virtual ~Ship() {};
 	};
 }

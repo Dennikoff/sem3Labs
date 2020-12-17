@@ -14,5 +14,6 @@ namespace MC {
 		DefShip& Modify(const std::string& place,const BatArm& weapon);
 		int Shot(int x, int y);
 		virtual std::ostream& print(std::ostream& c) override;
+		~DefShip()override {};
 	};
 }

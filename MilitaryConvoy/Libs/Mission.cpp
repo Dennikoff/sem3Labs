@@ -54,6 +54,30 @@ namespace MC {
 		return *this; 
 	}
 
+	Mission& Mission::setWeightLeft(long& key) {
+		if (key > 0)
+			WeightLeft = key;
+		else
+			throw std::invalid_argument("Invalid argument");
+		return *this;
+	}
+
+	Mission& Mission::setDelWeight(long& key) {
+		if (key > 0)
+			DelWeight = key;
+		else
+			throw std::invalid_argument("Invalid argument");
+		return *this;
+	}
+
+	Mission& Mission::setLostWeight(long& key) {
+		if (key > 0)
+			LostWeight= key;
+		else
+			throw std::invalid_argument("Invalid argument");
+		return *this;
+	}
+
 	Mission& Mission::setMaxShipCon(int& key) {
 		if (key > 0)
 			MaxShipCon = key;
@@ -70,17 +94,17 @@ namespace MC {
 		return *this; 
 	}
 
-	Mission& Mission::setCoordA(std::pair<int, int>& key) {
+	Mission& Mission::setCoordA(const std::pair<int, int>& key) {
 		Coordinates_A = key; 
 		return *this; 
 	}
 
-	Mission& Mission::setCoordB(std::pair<int, int>& key) {
+	Mission& Mission::setCoordB(const std::pair<int, int>& key) {
 		Coordinates_B = key; 
 		return *this; 
 	}
 
-	Mission& Mission::setCoordPir(std::pair<int, int>& key) { 
+	Mission& Mission::setCoordPir(const std::pair<int, int>& key) { 
 		Coordinates_Pir = key; 
 		return *this; 
 	}
@@ -105,7 +129,7 @@ namespace MC {
 	}
 
 
-	Mission& Mission::createShipP(Ship* a)
+	Mission& Mission::createShipP()
 	{
 		DefShip* def;
 		Unit un;
@@ -113,17 +137,17 @@ namespace MC {
 		un.ship = def;
 		un.coordinates = Coordinates_Pir;
 		if (tabP.size() == 0)
-			un.name = "1";
+			un.name = "9";
 		else
 		{
-			Unit cur = tabC.back();
+			Unit cur = tabP.back();
 			int nm = stoi(cur.name);
 			nm++;
 			char* str = new char[10];
 			_itoa_s(nm,str,10,10);
 			un.name = std::string(str);
 		}
-		tabC.push_back(un);
+		tabP.push_back(un);
 		return *this;
 	}
 
@@ -174,15 +198,6 @@ namespace MC {
 		}
 		else
 			throw std::out_of_range("Ship not found\n");
-		/*std::vector<Unit>::iterator it;
-		for (it = tabC.begin(); it != tabC.end(); ++it)
-		{
-			if (it->name == name)
-			{
-				MoneyLeft += it->ship->getPrice();
-				tabC.erase(it);
-			}
-		}*/
 		return *this;
 	}
 
@@ -256,7 +271,7 @@ namespace MC {
 		}
 		else
 			throw std::out_of_range("Ship not found\n");
-
+		return *this;
 	}
 
 	Mission& Mission::loadShip(const std::string& name, int count)
@@ -271,6 +286,7 @@ namespace MC {
 		}
 		else 
 			throw std::out_of_range("Ship not found\n");
+		return *this;
 	}
 
 	Mission& Mission::unloadShip(const std::string& name, int count)
@@ -285,5 +301,37 @@ namespace MC {
 		}
 		else
 			throw std::out_of_range("Ship not found\n");
+		return *this;
+	}
+
+	std::ostream& operator <<(std::ostream& c, Mission& a)
+	{
+		c << "Mission info:\n";
+		c << "Captain:" << a.cap << std::endl;
+		c << "StartMoney/MoneyLeft:" << a.StartMoney << '/' << a.MoneyLeft;
+		c << "\nFullWeight/WeightLeft:" << a.FullWeight << '/' << a.WeightLeft;
+		c << "\nDelWeight/LostWeight:" << a.DelWeight << '/' << a.LostWeight;
+		c << "\nMaxShipCon/MaxShipPir:" << a.MaxShipCon << '/' << a.MaxShipPir;
+		c << "\nCoordinates of Base A (x;y): (" << a.Coordinates_A.first << ';' << a.Coordinates_A.second << ")\n";
+		c << "Coordinates of Base B (x;y): (" << a.Coordinates_B.first << ';' << a.Coordinates_B.second << ")\n";
+		c << "Coordinates of Pirate Base (x;y): (" << a.Coordinates_Pir.first << ';' << a.Coordinates_Pir.second << ")\n";
+		c << "Time of pirate spawn:" << a.time << std::endl;
+		c << "Convoy Ships:\n\n";
+		auto it = a.tabC.begin();
+		for (it; it != a.tabC.end(); ++it)
+		{
+			c << "\tName: \"" << it->name << "\"" << std::endl;
+			c << "\tCoordinates (x;y): (" << it->coordinates.first << ';' << it->coordinates.second << ")\n";
+			c << "Ship:" << (it->ship) << std::endl;
+		}
+		c << "\n\nPirate Ships:\n\n";
+		it = a.tabP.begin();
+		for (it; it != a.tabP.end(); ++it)
+		{
+			c << "\tName: \"" << it->name << "\"" << std::endl;
+			c << "\tCoordinates (x;y): (" << it->coordinates.first << ';' << it->coordinates.second << ")\n";
+			c << "Ship:" << (it->ship) << std::endl;
+		}
+		return c;
 	}
 }

@@ -1,5 +1,2 @@
 ﻿  Mission.cpp
-C:\Users\dhark\source\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(260): warning C4715: MC::Mission::sellWeapon: значение возвращается не при всех путях выполнения
-C:\Users\dhark\source\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(274): warning C4715: MC::Mission::loadShip: значение возвращается не при всех путях выполнения
-C:\Users\dhark\source\sem3Labs\MilitaryConvoy\Libs\Mission.cpp(288): warning C4715: MC::Mission::unloadShip: значение возвращается не при всех путях выполнения
-  Libs.vcxproj -> C:\Users\dhark\source\sem3Labs\MilitaryConvoy\Debug\Libs.lib
+  Libs.vcxproj -> C:\Users\Денис\Desktop\C++\sem3Labs\MilitaryConvoy\Debug\Libs.lib

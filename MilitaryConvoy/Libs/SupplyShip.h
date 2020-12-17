@@ -10,7 +10,7 @@ namespace MC {
 		SupShip() :Ship(), maxweight(100), weight(0), coeff(50) {};
 		SupShip(std::string type , std::string name , Captain cap , double speed , int health , int price, int weight , short coeff )
 			:Ship(type, name, cap, speed, health, price),maxweight(weight), weight(0), coeff(coeff) {};
-		SupShip(int weight, short coeff) : Ship(), maxweight(weight), weight(0), coeff(coeff) {};
+		SupShip(int weight, short coeff) : maxweight(weight), weight(0), coeff(coeff) {};
 		int getMaxWeight() { return maxweight; };
 		int getWeight() { return weight; };
 		short getCoeff() { return coeff; };
@@ -22,6 +22,6 @@ namespace MC {
 		{
 			return getSpeed()*(1 - double((double(weight) / maxweight)*(coeff/100.00)));
 		}
-		/*~SupShip() override;*/
+		~SupShip() override {};
 	};
 }

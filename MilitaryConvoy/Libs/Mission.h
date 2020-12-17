@@ -9,6 +9,9 @@ namespace MC {
 		long StartMoney;
 		long MoneyLeft;
 		long FullWeight;
+		long WeightLeft;
+		long DelWeight;
+		long LostWeight;
 		int MaxShipCon;
 		int MaxShipPir;
 		std::pair<int, int> Coordinates_A;
@@ -16,14 +19,18 @@ namespace MC {
 		std::pair<int, int> Coordinates_Pir;
 		int time;
 	public:
-		Mission(Captain cap, long StartMoney, long MoneyL, long FullW, int MaxC, int MaxP, int time) :
-			cap(cap), StartMoney(StartMoney), MoneyLeft(MoneyL), FullWeight(FullW), MaxShipCon(MaxC), MaxShipPir(MaxP), time(time)  {};
+		Mission() : cap(Captain()), StartMoney(1000), MoneyLeft(1000), FullWeight(100), WeightLeft(100),  DelWeight(0), LostWeight(0), MaxShipCon(5), MaxShipPir(6), time(8) {};
+		Mission(Captain cap, long StartMoney, long FullW, int MaxC, int MaxP, int time):
+			cap(cap), StartMoney(StartMoney), MoneyLeft(StartMoney), FullWeight(FullW), WeightLeft(100), DelWeight(0), LostWeight(0), MaxShipCon(MaxC), MaxShipPir(MaxP), time(time) {};
 		Captain& getCap() { return cap; };
 		Table& getTableC() { return tabC; };
 		Table& getTableP() { return tabP; };
 		long getStartMoney() { return StartMoney; };
 		long getMoneyLeft() { return MoneyLeft; };
 		long getFullWeight() { return FullWeight; };
+		long getWeigthLeft() { return WeightLeft; };
+		long getDelWeigth() { return DelWeight; };
+		long getLostWeigth() { return LostWeight; }
 		int getMaxShip_Con() { return MaxShipCon; };
 		int	getMaxShip_Pir() { return MaxShipPir; };
 		std::pair<int, int> getCoordA() { return Coordinates_A; };
@@ -35,14 +42,17 @@ namespace MC {
 		Mission& setStartMoney(long& key);
 		Mission& setMoneyLeft(long& key);
 		Mission& setFullWeight(long& key);
+		Mission& setWeightLeft(long& key);
+		Mission& setDelWeight(long& key);
+		Mission& setLostWeight(long& key);
 		Mission& setMaxShipCon(int& key);
 		Mission& setMaxShipPir(int& key);
-		Mission& setCoordA(std::pair<int, int>& key);
-		Mission& setCoordB(std::pair<int, int>& key);
-		Mission& setCoordPir(std::pair<int, int>& key);
+		Mission& setCoordA(const std::pair<int, int>& key);
+		Mission& setCoordB(const std::pair<int, int>& key);
+		Mission& setCoordPir(const std::pair<int, int>& key);
 		Ship* getShipCon(const std::string& name);
 		Ship* getShipPir(const std::string& name);
-		Mission& createShipP(Ship* a);
+		Mission& createShipP();
 		Mission& buyCon(const int& );
 		Mission& sellCon(std::string);
 		Mission& buyWepon(const std::string& name, const std::string& place, BatArm& weapon);
@@ -52,6 +62,7 @@ namespace MC {
 		Mission& loadShip(const std::string& name, int count);
 		Mission& unloadShip(const std::string& name, int count);
 		Mission& autoLoad();
+		friend std::ostream& operator <<(std::ostream& c, Mission& a);
 	};
 	std::map < std::string, BatArm> CreateEmptyMap();
 }
