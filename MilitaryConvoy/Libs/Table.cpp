@@ -30,7 +30,7 @@ namespace MC {
 		return  ;
 	}*/
 
-	Table& Table::push_back(Unit& un) //не готово
+	Table& Table::push_back(Unit& un)
 	{
 		tab.push_back(un);
 		return *this;
@@ -40,7 +40,7 @@ namespace MC {
 	{
 		auto it = getShip(name);
 		if (it != tab.end())
-			tab.emplace(it);
+			tab.erase(it);
 		else
 			throw std::out_of_range("Element not found");
 		return *this;

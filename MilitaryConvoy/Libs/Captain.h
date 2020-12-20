@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <fstream>
 namespace MC {
 	class Captain {
 		int rank;
@@ -21,4 +22,5 @@ namespace MC {
 		Captain& setFathername(std::string);
 		friend std::ostream& operator <<(std::ostream& c, Captain cap);
 	};
+	Captain readFromFileCap(std::fstream&);
 }

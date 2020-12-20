@@ -39,7 +39,21 @@ namespace MC {
 				break;
 			}*/
 		mp[place] = weapon;
+		number++;
 		return *this;
+	}
+
+	DefShip& DefShip::AddWeapon(const std::string& place, const BatArm& weapon)
+	{
+		mp[place] = weapon;
+		return *this;
+	}
+	int DefShip::setNumber(const int& key)
+	{
+		if (key >= 0)
+			number = key;
+		else
+			throw std::invalid_argument("Incorrect number");
 	}
 
 	int DefShip::Shot(int x, int y)
@@ -49,18 +63,18 @@ namespace MC {
 
 	std::ostream& DefShip::print(std::ostream& c)
 	{
-		c << "Type = " << this->getType() << std::endl;
-		c << "Name = " << this->getName() << std::endl;
-		c << "Captain = " << this->getCaptain();
-		c << "Maxhealth/health = " << this->getMaxHealth() << "/" << this->getHealth() << std::endl;
-		c << "Maxspeed/speed = " << this->getMaxSpeed() << "/" << this->getSpeed() << std::endl;
-		c << "Price = " << this->getPrice() << std::endl;
-		c << "\nBattle Arming:\n\n";
+		c << "Type: " << this->getType() << std::endl;
+		c << "Name: " << this->getName() << std::endl;
+		c << "Captain -> " << this->getCaptain();
+		c << "Maxhealth/health: " << this->getMaxHealth() << "/" << this->getHealth() << std::endl;
+		c << "Maxspeed/speed: " << this->getMaxSpeed() << "/" << this->getSpeed() << std::endl;
+		c << "Price: " << this->getPrice() << std::endl << std::endl;
+		c << "Battle Arming:" << std::endl << "Count: " << number << std::endl << std::endl;
 		std::map<std::string, BatArm>::iterator it;
 		for (it = this->mp.begin(); it != this->mp.end(); ++it)
 		{
 			c << it->first << ": " << std::endl << it->second << std::endl;
 		}
-		return c << std::endl;
+		return c;
 	}
 }

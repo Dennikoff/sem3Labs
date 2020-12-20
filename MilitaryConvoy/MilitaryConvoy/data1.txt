@@ -1,0 +1,30 @@
+Mission info:
+Captain ->Surname: Ivanov|Name: Ivan|Fathername: Ivanovich
+Rank: 1
+
+StartMoney/MoneyLeft:1000/200
+FullWeight/WeightLeft:100/100
+DelWeight/LostWeight:0/0
+MaxShipCon/MaxShipPir:5/6
+Coordinates of Base A (x;y): (10;0)
+Coordinates of Base B (x;y): (100;0)
+Coordinates of Pirate Base (x;y): (10;10)
+Time of pirate spawn:8
+Convoy Ships:
+
+Pirate Ships:
+
+	Name: "2"
+	Coordinates (x;y): (10;10)
+Ship:Type: def
+Name: Warcraft
+Captain -> Surname: Ivanov|Name: Ivan|Fathername: Ivanovich
+Rank: 1
+
+Maxhealth/health: 100/100
+Maxspeed/speed: 15/15
+Price: 300
+
+Battle Arming:
+Count: 0
+

@@ -11,7 +11,7 @@ namespace MC {
 	}
 
 	BatArm& BatArm::setDamage(int key) {
-		if (key > 0)
+		if (key >= 0)
 			damage = key;
 		else
 			throw std::invalid_argument("Invalid argument");
@@ -19,7 +19,7 @@ namespace MC {
 	}
 
 	BatArm& BatArm::setRateFire(int key) {
-		if (key > 0)
+		if (key >= 0)
 			ratefire = key;
 		else
 			throw std::invalid_argument("Invalid argument");
@@ -27,7 +27,7 @@ namespace MC {
 	}
 
 	BatArm& BatArm::setRange(int key) {
-		if (key > 0)
+		if (key >= 0)
 			range = key;
 		else
 			throw std::invalid_argument("Invalid argument");
@@ -35,7 +35,7 @@ namespace MC {
 	}
 
 	BatArm& BatArm::setMaxAmmo(int key) {
-		if (key > 0)
+		if (key >= 0)
 			maxammo = key;
 		else
 			throw std::invalid_argument("Invalid argument");
@@ -43,7 +43,7 @@ namespace MC {
 	}
 
 	BatArm& BatArm::setAmmo(int key) {
-		if (key > 0)
+		if (key >= 0)
 			ammo = key;
 		else
 			throw std::invalid_argument("Invalid argument");
@@ -51,7 +51,7 @@ namespace MC {
 	}
 
 	BatArm& BatArm::setPrice(int key) {
-		if (key > 0)
+		if (key >= 0)
 			price = key;
 		else
 			throw std::invalid_argument("Invalid argument");
@@ -70,12 +70,12 @@ namespace MC {
 
 	std::ostream& operator <<(std::ostream& c, BatArm a)
 	{
-		c << "Type = " << a.type << std::endl;
-		c << "Maxammo/ammo " << a.maxammo << "/" << a.ammo << std::endl;
-		c << "Damage = " << a.damage << std::endl;
-		c << "Range = " << a.range << std::endl;
-		c << "RateFire = " << a.ratefire << std::endl;
-		c << "Price = " << a.price << std::endl;
-		return c << std::endl;
+		c << "Type: " << a.type << std::endl;
+		c << "Maxammo/ammo: " << a.maxammo << "/" << a.ammo << std::endl;
+		c << "Damage: " << a.damage << std::endl;
+		c << "Range: " << a.range << std::endl;
+		c << "RateFire: " << a.ratefire << std::endl;
+		c << "Price: " << a.price << std::endl;
+		return c;
 	}
 }

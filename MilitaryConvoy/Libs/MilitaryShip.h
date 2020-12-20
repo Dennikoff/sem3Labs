@@ -6,7 +6,8 @@ namespace MC {
 	{
 	public:
 		std::ostream& print(std::ostream& c) override;
-		MilShip(DefShip sh, int weight, int coeff) :DefShip(sh), SupShip(weight,coeff) {}
+		MilShip(DefShip sh, int weight, int coeff) :DefShip(), SupShip(weight, coeff), Ship(sh) {}
+		MilShip() :DefShip(), SupShip(), Ship() {}
 		~MilShip() override {};
 	};
 }

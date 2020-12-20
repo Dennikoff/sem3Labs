@@ -10,6 +10,28 @@ namespace MC {
 		Ship* ship;
 		std::pair<int, int> coordinates;
 		Unit()  {};
+		/*Unit(Unit& a): name(a.name), coordinates(a.coordinates)
+		{
+			if(typeid(*(a.ship)) == typeid(SupShip))
+			{
+				SupShip* cur = dynamic_cast<SupShip*>(a.ship);
+				ship = new SupShip(*cur);
+			}
+			else if (typeid(*(a.ship)) == typeid(DefShip))
+			{
+				DefShip* cur = dynamic_cast<DefShip*>(a.ship);
+				ship = new DefShip(*cur);
+			}
+				else if (typeid(*(a.ship)) == typeid(MilShip))
+				{
+					MilShip* cur = dynamic_cast<MilShip*>(a.ship);
+					ship = new MilShip(*cur);
+				}
+			
+		}*/
+		~Unit() { 
+			//delete ship; 
+		}
 	};
 	class Table {
 		friend class TableIt;

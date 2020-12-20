@@ -13,10 +13,15 @@ namespace MC {
 		int health;
 		int price;
 	public:
-		Ship() :type("LichKing"), name("Warcraft"), cap(Captain()), maxspeed(15), speed(15), maxhealth(100), health(100), price(300) {}
+		Ship() :type("none"), name("Warcraft"), cap(Captain()), maxspeed(15), speed(15), maxhealth(100), health(100), price(300) {}
 		Ship(std::string type) : Ship() { Ship::type = type; };
-		Ship(std::string type , std::string name, Captain cap, double speed, int health, int price)
-			:type(type), name(name), cap(cap), maxspeed(speed), speed(speed), maxhealth(health), health(health), price(price) {};
+		Ship(std::string type , std::string name, Captain cap, double speed, int health, int price, int spd = -1)
+			:type(type), name(name), cap(cap), maxspeed(speed), maxhealth(health), health(health), price(price) { 
+			if (spd == -1)
+				Ship::speed = speed;
+			else
+				Ship::speed = spd;
+		};
 		std::string getType() const { return type; };
 		std::string getName() const { return name; };
 		Captain getCaptain() const { return cap; };
@@ -27,6 +32,7 @@ namespace MC {
 		int getPrice() const { return price; };
 		Ship& setType(std::string key);
 		Ship& setName(std::string key);
+		Ship& setCaptain(Captain key);
 		Ship& setMaxSpeed(double key);
 		Ship& setSpeed(double key);
 		Ship& setMaxHealth(int key);

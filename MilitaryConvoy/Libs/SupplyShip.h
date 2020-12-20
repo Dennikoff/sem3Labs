@@ -8,8 +8,8 @@ namespace MC {
 		short coeff; //0..100 = 0.00..1.00
 	public:
 		SupShip() :Ship(), maxweight(100), weight(0), coeff(50) {};
-		SupShip(std::string type , std::string name , Captain cap , double speed , int health , int price, int weight , short coeff )
-			:Ship(type, name, cap, speed, health, price),maxweight(weight), weight(0), coeff(coeff) {};
+		SupShip(std::string type , std::string name , Captain cap , double spd , int health , int price, int weight , short coeff )
+			:Ship(type, name, cap, spd, health, price), maxweight(weight), weight(0), coeff(coeff) {}; // Вопрос
 		SupShip(int weight, short coeff) : maxweight(weight), weight(0), coeff(coeff) {};
 		int getMaxWeight() { return maxweight; };
 		int getWeight() { return weight; };

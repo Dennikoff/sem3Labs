@@ -14,8 +14,14 @@ namespace MC{
 		return *this; 
 	}
 
+	Ship& Ship::setCaptain(Captain key)
+	{
+		cap = key;
+		return *this;
+	}
+
 	Ship& Ship::setMaxSpeed(double key) {
-		if (key > 0)
+		if (key >= 0)
 			maxspeed = key;
 		else
 			throw std::invalid_argument("Invalid argument");
@@ -23,7 +29,7 @@ namespace MC{
 	}
 
 	Ship& Ship::setSpeed(double key) {
-		if (key > 0)
+		if (key >= 0)
 			speed = key;
 		else
 			throw std::invalid_argument("Invalid argument");
@@ -31,7 +37,7 @@ namespace MC{
 	}
 
 	Ship& Ship::setMaxHealth(int key) {
-		if (key > 0)
+		if (key >= 0)
 			maxhealth = key;
 		else
 			throw std::invalid_argument("Invalid argument");
@@ -39,7 +45,7 @@ namespace MC{
 	}
 
 	Ship& Ship::setHealth(int key) {
-		if (key > 0)
+		if (key >= 0)
 			health = key;
 		else
 			throw std::invalid_argument("Invalid argument");
@@ -47,7 +53,7 @@ namespace MC{
 	}
 
 	Ship& Ship::setPrice(int key) {
-		if (key > 0)
+		if (key >= 0)
 			price = key;
 		else
 			throw std::invalid_argument("Invalid argument");
