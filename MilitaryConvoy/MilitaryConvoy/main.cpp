@@ -3,298 +3,275 @@
 using namespace MC;
 int main()
 {
-	Mission h;
-	std::fstream fs;
-	fs.open("data.txt",std::fstream::in| std::fstream::out);
-	std::string str;
-	std::getline(fs, str);
-	Captain cap = readFromFileCap(fs);
-	h.setCap(cap);
-	std::getline(fs, str);
-	str.erase(str.find("/"), 1);
-	h.setStartMoney(stoi(str.substr(str.find(":") + 2, str.find("/") - str.find(":") - 2)));
-	h.setMoneyLeft(stoi(str.substr(str.find("/") + 1)));
-	std::getline(fs, str);
-	str.erase(str.find("/"), 1);
-	h.setFullWeight(stoi(str.substr(str.find(":") + 2, str.find("/") - str.find(":") - 2)));
-	h.setWeightLeft(stoi(str.substr(str.find("/") + 1)));
-	std::getline(fs, str);
-	str.erase(str.find("/"), 1);
-	h.setDelWeight(stoi(str.substr(str.find(":") + 2, str.find("/") - str.find(":") - 2)));
-	h.setLostWeight(stoi(str.substr(str.find("/") + 1)));
-	std::getline(fs, str);
-	str.erase(str.find("/"), 1);
-	h.setMaxShipCon(stoi(str.substr(str.find(":") + 2, str.find("/") - str.find(":") - 2)));
-	h.setMaxShipPir(stoi(str.substr(str.find("/") + 1)));
-	std::getline(fs, str);
-	str.erase(str.find("("), 5);
-	h.setCoordA(std::make_pair(stoi(str.substr(str.find("(") + 1, str.find(";") - str.find("(") - 1)), stoi(str.substr(str.find(";") + 1, str.find(")") - str.find(";") - 1))));
-	std::getline(fs, str);
-	str.erase(str.find("("), 5);
-	h.setCoordB(std::make_pair(stoi(str.substr(str.find("(") + 1, str.find(";") - str.find("(") - 1)), stoi(str.substr(str.find(";") + 1, str.find(")") - str.find(";") - 1))));
-	std::getline(fs, str);
-	str.erase(str.find("("), 5);
-	h.setCoordPir(std::make_pair(stoi(str.substr(str.find("(") + 1, str.find(";") - str.find("(") - 1)), stoi(str.substr(str.find(";") + 1, str.find(")") - str.find(";") - 1))));
-	std::getline(fs, str);
-	h.setTime(stoi(str.substr(str.find(":")+2)));
-	std::getline(fs, str);
-	std::getline(fs, str);
-	std::getline(fs, str);
-	Unit un;
-	while(str.find("Pirate") == -1)
+	Mission mis;
+	std::cout << "Welcome to the Military Convoy!\n";
+	std::cout << "If you want to create new Mission, enter 1;\nIf you want to create your Mission from file, enter 2.\n";
+	int ch;
+	std::cin >> ch;
+	while (ch != 1 && ch != 2)
 	{
-		int x = str.find("\"");
-		str.erase(x, 1);
-		un.name = str.substr(x, str.find("\"") - x);
-		std::getline(fs, str);
-		str.erase(str.find("("), 5);
-		un.coordinates = (std::make_pair(stoi(str.substr(str.find("(") + 1, str.find(";") - str.find("(") - 1)), stoi(str.substr(str.find(";") + 1, str.find(")") - str.find(";") - 1))));
-		DefShip* def;
-		SupShip* sup;
-		MilShip* mil;
-		std::getline(fs, str);
-		std::getline(fs, str);
-		std::string tp = str.substr(str.find(":") + 2);
-		std::getline(fs, str);
-		std::string name = str.substr(str.find(":") + 2);
-		Captain cap = readFromFileCap(fs);
-		std::getline(fs, str);
-		str.erase(str.find("/"), 1);
-		int MaxHealth = stoi(str.substr(str.find(":") + 2, str.find("/") - str.find(":") - 2));
-		int Health = stoi(str.substr(str.find("/") + 1));
-		std::getline(fs, str);
-		str.erase(str.find("/"), 1);
-		int MaxSpeed = stoi(str.substr(str.find(":") + 2, str.find("/") - str.find(":") - 2));
-		int Speed = stoi(str.substr(str.find("/") + 1));
-		std::getline(fs, str);
-		int Price = stoi(str.substr(str.find(":") + 2));
-		if (tp == "def")
+		std::cin.clear();
+		std::cout << "Please, enter 1 or 2\n";
+		std::cin >> ch;
+	}
+	ch--;
+	if (ch)
+	{
+		std::string name;
+		std::cout << "Please, enter name of the file:\n";
+		std::cin >> name;
+		try
 		{
-			def = new DefShip();
-			def->setType(tp);
-			def->setName(name);
-			def->setCaptain(cap);
-			def->setMaxHealth(MaxHealth);
-			def->setHealth(Health);
-			def->setMaxSpeed(MaxSpeed);
-			def->setSpeed(Speed);
-			def->setPrice(Price);
-			std::getline(fs, str);
-			std::getline(fs, str);
-			std::getline(fs, str);
-			def->setNumber(stoi(str.substr(str.find(":") + 2)));
-			for (int i = 0; i < def->getNumber(); i++)
+			mis = readFromFileMis(name);
+		}
+		catch (const std::exception& er)
+		{
+			std::cout << er.what() << std::endl;
+		}
+	}
+	int choice = 1;
+	std::cout << "Here some option for you:\n0)Exit\n1)Add new con ship\n2)Add new weapon to con ship\n3)Create Pir ship\n4)Add new weapon to pir ship\n5)Print your mission\n6)A ship atack B ship\n7)Sell ship con\n8)Sell weapon con\n9)Destroy Ship con\n10)Load ship\n11)Unload Ship\n";
+	while (choice)
+	{
+		std::cout << "What do you want to do?\n";
+		std::cin >> choice;
+		switch (choice){
+		case 1:
+		{
+			std::cout << "What type of ship do you want to add:\n1)Supply Ship\n2)Defend Ship\n3)Military Ship\n>>>";
+			std::cin >> ch;
+			mis.buyCon(ch);
+			break;
+		}
+		case 2:
+		{
+			std::cout << "Enter place:\n0)To Exit\n1)Bow\n2)Board Right\n3)Board Left\n4)Stern\n>>>";
+			std::cin >> ch;
+			if (!ch) break;
+			int ammo, damage, price, range, ratefire;
+			std::string place, type;
+			switch (ch)
 			{
-				BatArm weapon;
-				std::getline(fs, str); 
-				std::getline(fs, str);
-				std::string place = str.substr(0, str.find(":"));
-				std::getline(fs, str);
-				weapon.setType(str.substr(str.find(":") + 2));
-				std::getline(fs, str);
-				str.erase(str.find("/"), 1);
-				weapon.setMaxAmmo(stoi(str.substr(str.find(":") + 2, str.find("/") - str.find(":") - 2)));
-				weapon.setAmmo(stoi(str.substr(str.find("/") + 1)));
-				std::getline(fs, str);
-				weapon.setDamage(stoi(str.substr(str.find(":") + 2)));
-				std::getline(fs, str);
-				weapon.setRange(stoi(str.substr(str.find(":") + 2)));
-				std::getline(fs, str);
-				weapon.setRateFire(stoi(str.substr(str.find(":") + 2)));
-				std::getline(fs, str);
-				weapon.setPrice(stoi(str.substr(str.find(":") + 2)));
-				def->AddWeapon(place, weapon);
+			case 1:
+				place = "Bow";
+				break;
+			case 2:
+				place = "BoardR";
+				break;
+			case 3:
+				place = "BoardL";
+				break;
+			case 4:
+				place = "Stern";
+				break;
+			default:
+				break;
 			}
-			//std::cout << def;
-			un.ship = def;
-		}
-		else if (tp == "sup")
-		{
-			sup = new SupShip();
-			sup->setType(tp);
-			sup->setName(name);
-			sup->setCaptain(cap);
-			sup->setMaxHealth(MaxHealth);
-			sup->setHealth(Health);
-			sup->setMaxSpeed(MaxSpeed);
-			sup->setSpeed(Speed);
-			sup->setPrice(Price);
-			std::getline(fs, str);
-			str.erase(str.find("/"), 1);
-			sup->setMaxWeight(stoi(str.substr(str.find(":") + 2, str.find("/") - str.find(":") - 2)));
-			sup->setWeight(stoi(str.substr(str.find("/") + 1)));
-			std::getline(fs, str);
-			sup->setCoeff(stoi(str.substr(str.find(":") + 2)));
-			//std::cout << sup;
-			un.ship = sup;
-		}
-		else if (tp == "mil")
-		{
-			mil = new MilShip();
-			mil->setType(tp);
-			mil->setName(name);
-			mil->setCaptain(cap);
-			mil->setMaxHealth(MaxHealth);
-			mil->setHealth(Health);
-			mil->setMaxSpeed(MaxSpeed);
-			mil->setSpeed(Speed);
-			mil->setPrice(Price);
-			std::getline(fs, str);
-			str.erase(str.find("/"), 1);
-			mil->setMaxWeight(stoi(str.substr(str.find(":") + 2, str.find("/") - str.find(":") - 2)));
-			mil->setWeight(stoi(str.substr(str.find("/") + 1)));
-			std::getline(fs, str);
-			mil->setCoeff(stoi(str.substr(str.find(":") + 2)));
-			std::getline(fs, str);
-			std::getline(fs, str);
-			std::getline(fs, str);
-			mil->setNumber(stoi(str.substr(str.find(":") + 2)));
-			for (int i = 0; i < mil->getNumber(); i++)
+			std::string name;
+			std::cout << "Enter name of the ship:\n";
+			std::cin >> name;
+			std::cout << "Enter Stats\n Type->";
+			std::cin >> type;
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cout << "Ammo->";
+			std::cin >> ammo;
+			std::cout << "Damage->";
+			std::cin >> damage;
+			std::cout << "range->";
+			std::cin >> range;
+			std::cout << "Ratefire->";
+			std::cin >> ratefire;
+			price = (ammo + damage + range + ratefire) / 10;
+			BatArm weapon(type, damage, ratefire, range, ammo, price);
+			try
 			{
-				BatArm weapon;
-				std::getline(fs, str);
-				std::getline(fs, str);
-				std::string place = str.substr(0, str.find(":"));
-				std::getline(fs, str);
-				weapon.setType(str.substr(str.find(":") + 2));
-				std::getline(fs, str);
-				str.erase(str.find("/"), 1);
-				weapon.setMaxAmmo(stoi(str.substr(str.find(":") + 2, str.find("/") - str.find(":") - 2)));
-				weapon.setAmmo(stoi(str.substr(str.find("/") + 1)));
-				std::getline(fs, str);
-				weapon.setDamage(stoi(str.substr(str.find(":") + 2)));
-				std::getline(fs, str);
-				weapon.setRange(stoi(str.substr(str.find(":") + 2)));
-				std::getline(fs, str);
-				weapon.setRateFire(stoi(str.substr(str.find(":") + 2)));
-				std::getline(fs, str);
-				weapon.setPrice(stoi(str.substr(str.find(":") + 2)));
-				mil->AddWeapon(place, weapon);
+				mis.buyWeapon(name, place, weapon);
 			}
-			//std::cout << mil;
-			un.ship = mil;
+			catch (const std::exception& er)
+			{
+				std::cout << er.what() << std::endl;
+			}
+			break;
 		}
-		h.addShipCon(un);
-		std::getline(fs, str);
-		std::getline(fs, str);
+		case 3:
+		{
+			mis.createShipP();
+			break;
+		}
+		case 4:
+		{
+			int ammo, damage, price, range, ratefire;
+			std::string place, type;
+			std::cout << "Enter place:\n0)To Exit\n1)Bow\n2)Board Right\n3)Board Left\n4)Stern\n>>>";
+			std::cin >> ch;
+			switch (ch)
+			{
+			case 1:
+				place = "Bow";
+				break;
+			case 2:
+				place = "BoardR";
+				break;
+			case 3:
+				place = "BoardL";
+				break;
+			case 4:
+				place = "Stern";
+				break;
+			default:
+				break;
+			}
+			std::string name;
+			std::cout << "Enter name of the ship:\n";
+			std::cin >> name;
+			std::cout << "Enter Stats\n Type->";
+			std::cin >> type;
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cout << "Ammo->";
+			std::cin >> ammo;
+			std::cout << "Damage->";
+			std::cin >> damage;
+			std::cout << "range->";
+			std::cin >> range;
+			std::cout << "Ratefire->";
+			std::cin >> ratefire;
+			price = (ammo + damage + range + ratefire) / 10;
+			BatArm weapon(type, damage, ratefire, range, ammo, price);
+			try
+			{
+				mis.createWeapon(name, place, weapon);
+			}
+			catch (const std::exception& er)
+			{
+				std::cout << er.what() << std::endl;
+			}
+			break;
+		}
+		case 5:
+		{
+			std::cout << mis;
+			break;
+		}
+		case 6:
+		{
+			std::cout << "Enter name of the ships A and B";
+			std::string A, B;
+			std::cin >> A, B;
+			DefShip* def = dynamic_cast<DefShip*>(mis.getShipCon(A));
+			Ship* sh = mis.getShipPir(B);
+			if (def)
+			{
+				sh->takeDamage(def->getMap()["Bow"].Atack());
+			}
+			else
+				std::cout << "Ship has incorrect type";
+			break;
+		}
+		case 7:
+		{
+			std::string name;
+			std::cout << "Enter name of the ship:\n";
+			std::cin >> name;
+			mis.sellCon(name);
+			break;
+		}
+		case 8:
+		{
+			std::string name;
+			std::string place;
+			std::cout << "Enter name of the ship:\n";
+			std::cin >> name;
+			std::cout << "Enter place:\n0)To Exit\n1)Bow\n2)Board Right\n3)Board Left\n4)Stern\n>>>";
+			std::cin >> ch;
+			switch (ch)
+			{
+			case 1:
+				place = "Bow";
+				break;
+			case 2:
+				place = "BoardR";
+				break;
+			case 3:
+				place = "BoardL";
+				break;
+			case 4:
+				place = "Stern";
+				break;
+			default:
+				break;
+			}
+			try
+			{
+				mis.sellWeapon(name, place);
+			}
+			catch (const std::exception& er)
+			{
+				std::cout << er.what() << std::endl;
+			}
+		}
+		case 9:
+		{
+			std::string name;
+			std::cout << "Enter name of the ship:\n";
+			std::cin >> name;
+			try
+			{
+				mis.destroyShipCon(name);
+			}
+			catch (const std::exception& er)
+			{
+				std::cout << er.what() << std::endl;
+			}
+			break;
+		}
+		case 10:
+		{
+			std::string name;
+			std::cout << "Enter name of the ship:\n";
+			std::cin >> name;
+			std::cout << "Enter weigth\n";
+			int weight;
+			std::cin >> weight;
+			try
+			{
+				mis.loadShip(name, weight);
+			}
+			catch (const std::exception& er)
+			{
+				std::cout << er.what() << std::endl;
+			}
+			break;
+		}
+		case 11:
+		{
+			std::string name;
+			std::cout << "Enter name of the ship:\n";
+			std::cin >> name;
+			std::cout << "Enter weigth\n";
+			int weight;
+			std::cin >> weight;
+			try
+			{
+				mis.unloadShip(name, weight);
+			}
+			catch (const std::exception& er)
+			{
+				std::cout << er.what() << std::endl;
+			}
+			break;
+		}
+		}
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
-	std::cout << h;
-	//std::cout << "\n" <<str.substr(str.find(";") + 1, str.find(")") - str.find(";") - 1);
-	//h.setStartMoney(10000);
-	//std::cout << cap;
-	//cap.setName();
-	//std::cout << str;
-	/*MilShip mil;
-	mil.print(std::cout);*/
-	/*Unit h;
-	SupShip();
-	h.ship = new DefShip();
-	std::cout << typeid(*(h.ship)).name();*/
-	/*std::fstream fs;
-	std::string nm = "data.txt";
-	fs.open(nm,std::fstream::in| std::fstream::out);
-	Mission h;
-	h.setCoordA(std::make_pair(10,0));
-	h.setCoordB(std::make_pair(100,0));
-	h.setCoordPir(std::make_pair(10,10));
-	BatArm weapon("Mashine gun",200,14,50,30,200);
-	h.buyCon(2);
-	h.buyCon(1);
-	h.buyWeapon("a", "Stern", weapon);
-	h.createShipP();
-	h.createShipP();
-	h.createWeapon("1", "BoardL", weapon);
-	h.createWeapon("1", "Bow", weapon);
-	try
+	std::cout << "Do you want to save your mission in file? 1 - no; 2 - yes;\n";
+	std::cin >> ch;
+	if (ch - 1)
 	{
-		h.createWeapon("3", "BoardR", weapon);
+		std::string name;
+		std::cout << "Enter name of the file\n";
+		std::cin >> name;
+		mis.writeToFile(name);
 	}
-	catch (const std::exception& er)
-	{
-		std::cout << er.what() << std::endl;
-	}
-	try
-	{
-		h.buyWeapon("b", "BoardL", weapon);
-	}
-	catch (const std::exception& er)
-	{
-		std::cout << er.what() << std::endl;
-	}
-	std::cout << h;
-	h.sellCon("b");
-	std::cout << h;
-	h.buyCon(1);
-	h.destroyShipPir("1");
-	try
-	{
-		h.sellWeapon("b", "Stern");
-	}
-	catch (const std::exception& er)
-	{
-		std::cout << er.what() << std::endl;
-	}
-	try
-	{
-		h.sellWeapon("a", "BoardL");
-	}
-	catch (const std::exception& er)
-	{
-		std::cout << er.what() << std::endl;
-	}
-	try
-	{
-		h.sellWeapon("b", "Stern");
-	}
-	catch (const std::exception& er)
-	{
-		std::cout << er.what() << std::endl;
-	}
-	try
-	{
-		h.loadShip("a", 10);
-	}
-	catch (const std::exception& er)
-	{
-		std::cout << er.what() << std::endl;
-	}
-	try
-	{
-		h.loadShip("b", 10);
-	}
-	catch (const std::exception& er)
-	{
-		std::cout << er.what() << std::endl;
-	}
-	try
-	{
-		h.loadShip("b", 1000);
-	}
-	catch (const std::exception& er)
-	{
-		std::cout << er.what() << std::endl;
-	}
-	try
-	{
-		h.unloadShip("a", 10);
-	}
-	catch (const std::exception& er)
-	{
-		std::cout << er.what() << std::endl;
-	}
-	try
-	{
-		h.unloadShip("b", 10);
-	}
-	catch (const std::exception& er)
-	{
-		std::cout << er.what() << std::endl;
-	}
-	h.buyWeapon("a","BoardL",weapon);
-	h.buyCon(3);
-	h.buyWeapon("c", "BoardL", weapon);
-	std::cout << h;
-	fs << h;
-	fs.close();*/
 	return 0;
 }

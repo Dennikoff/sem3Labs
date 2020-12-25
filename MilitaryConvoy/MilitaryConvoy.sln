@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MilitaryConvoy", "MilitaryC
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Libs", "Libs\Libs.vcxproj", "{87997F14-F82C-470D-AE5E-31D0B06EB407}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj", "{D5404028-FF5B-4E6F-AF84-F75866CF2DF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{87997F14-F82C-470D-AE5E-31D0B06EB407}.Release|x64.Build.0 = Release|x64
 		{87997F14-F82C-470D-AE5E-31D0B06EB407}.Release|x86.ActiveCfg = Release|Win32
 		{87997F14-F82C-470D-AE5E-31D0B06EB407}.Release|x86.Build.0 = Release|Win32
+		{D5404028-FF5B-4E6F-AF84-F75866CF2DF5}.Debug|x64.ActiveCfg = Debug|x64
+		{D5404028-FF5B-4E6F-AF84-F75866CF2DF5}.Debug|x64.Build.0 = Debug|x64
+		{D5404028-FF5B-4E6F-AF84-F75866CF2DF5}.Debug|x86.ActiveCfg = Debug|Win32
+		{D5404028-FF5B-4E6F-AF84-F75866CF2DF5}.Debug|x86.Build.0 = Debug|Win32
+		{D5404028-FF5B-4E6F-AF84-F75866CF2DF5}.Release|x64.ActiveCfg = Release|x64
+		{D5404028-FF5B-4E6F-AF84-F75866CF2DF5}.Release|x64.Build.0 = Release|x64
+		{D5404028-FF5B-4E6F-AF84-F75866CF2DF5}.Release|x86.ActiveCfg = Release|Win32
+		{D5404028-FF5B-4E6F-AF84-F75866CF2DF5}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

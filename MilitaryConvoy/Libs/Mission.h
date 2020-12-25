@@ -18,7 +18,6 @@ namespace MC {
 		std::pair<int, int> Coordinates_B;
 		std::pair<int, int> Coordinates_Pir;
 		int time;
-		Mission& addShip();
 	public:
 		Mission() : cap(Captain()), StartMoney(2000), MoneyLeft(2000), FullWeight(100), WeightLeft(100),  DelWeight(0), LostWeight(0), MaxShipCon(5), MaxShipPir(6), time(8) {};
 		Mission(Captain cap, long StartMoney, long FullW, int MaxC, int MaxP, int time):
@@ -37,6 +36,7 @@ namespace MC {
 		std::pair<int, int> getCoordA() { return Coordinates_A; };
 		std::pair<int, int> getCoordB() { return Coordinates_B; };
 		std::pair<int, int> getCoordPir() { return Coordinates_Pir; };
+		int getTime() { return time; };
 		Mission& setCap(const Captain& key);
 		Mission& setTableC(const Table& key);
 		Mission& setTableP(const Table& key);
@@ -68,7 +68,8 @@ namespace MC {
 		Mission& unloadShip(const std::string& name, int count);
 		Mission& autoLoad();
 		friend std::ostream& operator <<(std::ostream& c, Mission& a);
+		int writeToFile(std::string name);
 	};
-	Mission readFromFileMis(std::fstream&);
+	Mission readFromFileMis(std::string);
 	std::map < std::string, BatArm> CreateEmptyMap();
 }

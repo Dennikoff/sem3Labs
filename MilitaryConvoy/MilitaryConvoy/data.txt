@@ -2,49 +2,18 @@ Mission info:
 Captain -> Surname: Ivanov|Name: Ivan|Fathername: Ivanovich
 Rank: 1
 
-StartMoney/MoneyLeft: 2000/500
+StartMoney/MoneyLeft: 2000/910
 FullWeight/WeightLeft: 100/100
 DelWeight/LostWeight: 0/0
 MaxShipCon/MaxShipPir: 5/6
-Coordinates of Base A (x;y): (10;0)
-Coordinates of Base B (x;y): (100;0)
-Coordinates of Pirate Base (x;y): (10;10)
+Coordinates of Base A (x;y): (0;0)
+Coordinates of Base B (x;y): (0;0)
+Coordinates of Pirate Base (x;y): (0;0)
 Time of pirate spawn: 8
 Convoy Ships:
 
 	Name: "a"
-	Coordinates (x;y): (10;0)
-	Ship:
-Type: def
-Name: Warcraft
-Captain -> Surname: Ivanov|Name: Ivan|Fathername: Ivanovich
-Rank: 1
-
-Maxhealth/health: 100/100
-Maxspeed/speed: 15/15
-Price: 300
-
-Battle Arming:
-Count: 2
-
-BoardL: 
-Type: Mashine gun
-Maxammo/ammo: 30/30
-Damage: 200
-Range: 50
-RateFire: 14
-Price: 200
-
-Stern: 
-Type: Mashine gun
-Maxammo/ammo: 30/30
-Damage: 200
-Range: 50
-RateFire: 14
-Price: 200
-
-	Name: "b"
-	Coordinates (x;y): (10;0)
+	Coordinates (x;y): (0;0)
 	Ship:
 Type: sup
 Name: Warcraft
@@ -57,8 +26,31 @@ Price: 300
 Maxweight/weight: 100/0
 Coefficient: 50
 
+	Name: "b"
+	Coordinates (x;y): (0;0)
+	Ship:
+Type: def
+Name: Warcraft
+Captain -> Surname: Ivanov|Name: Ivan|Fathername: Ivanovich
+Rank: 1
+
+Maxhealth/health: 100/100
+Maxspeed/speed: 15/15
+Price: 300
+
+Battle Arming:
+Count: 1
+
+Bow: 
+Type: kek
+Maxammo/ammo: 1500/1500
+Damage: 30
+Range: 70
+RateFire: 300
+Price: 190
+
 	Name: "c"
-	Coordinates (x;y): (10;0)
+	Coordinates (x;y): (0;0)
 	Ship:
 Type: mil
 Name: Warcraft
@@ -67,6 +59,16 @@ Rank: 1
 
 Maxhealth/health: 100/100
 Maxspeed/speed: 15/15
+Price: 300
+Maxweight/weight: 100/0
+Coefficient: 50
+
+Battle Arming:
+Count: 0
+
+Pirate Ships:
+
+/speed: 15/15
 Price: 300
 Maxweight/weight: 100/0
 Coefficient: 50
@@ -84,18 +86,25 @@ Price: 200
 
 Pirate Ships:
 
-	Name: "2"
-	Coordinates (x;y): (10;10)
+	Name: "10"
+	Coordinates (x;y): (1000;10)
 Ship:
 Type: def
 Name: Warcraft
-Captain -> Surname: Ivanov|Name: Ivan|Fathername: Ivanovich
+Captain -> Surname: DENCHIK|Name: kek|Fathername: vapenation
 Rank: 1
 
-Maxhealth/health: 100/100
-Maxspeed/speed: 15/15
+Maxhealth/health: 1100/100
+Maxspeed/speed: 125/15
 Price: 300
 
 Battle Arming:
-Count: 0
+Count: 1
 
+BoardL: 
+Type: Mashine gun
+Maxammo/ammo: 30/30
+Damage: 200
+Range: 50
+RateFire: 14
+Price: 200

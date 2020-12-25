@@ -27,7 +27,21 @@ namespace MC {
 					MilShip* cur = dynamic_cast<MilShip*>(a.ship);
 					ship = new MilShip(*cur);
 				}
-			
+		}
+		Unit(Unit&& a) : name(a.name), coordinates(a.coordinates)
+		{
+			ship = a.ship; 
+		}
+		Unit& operator =(Unit& a)
+		{
+			if (&a != this)
+			{
+				this->coordinates = a.coordinates;
+				this->name = a.name;
+				delete this->ship;
+				auto sh = a.ship;
+				
+			}
 		}*/
 		~Unit() { 
 			//delete ship; 

@@ -20,8 +20,8 @@ namespace MC {
 			std::cin >> range;
 			std::cout << "Ratefire->";
 			std::cin >> ratefire;
-			BatArm weapon(type, damage, ratefire, range, ammo, price);*/
-			/*switch (a)
+			BatArm weapon(type, damage, ratefire, range, ammo, price);
+			switch (a)
 			{
 			case 1:
 				mp.emplace("Bow", weapon);
